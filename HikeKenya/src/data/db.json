@@ -1,0 +1,197 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Newton",
+      "email": "newton@example.com",
+      "password": "1234",
+      "joinedtrails": [1, 3],
+      "badges": ["Explorer", "Mountain Master"],
+      "points": 120,
+      "payments" : []
+    },
+    {
+      "id": 2,
+      "name": "Bonfas ",
+      "email": "bonfas@example.com",
+      "password": "abcd",
+      "joinedtrails": [2, 4, 5],
+      "badges": ["Trail Blazer"],
+      "points": 80,
+      "payments" : []
+    },
+    {
+      "id": 3,
+      "name": "Marsha",
+      "email": "marsha@example.com",
+      "password": "pass123",
+      "joinedtrails": [1, 6, 7],
+      "badges": ["Explorer", "Forest Friend"],
+      "points": 105,
+      "payments" : []
+    }
+  ],
+  "trails": [
+    {
+      "id": 1,
+      "title": "Mt. Kenya Summit Trek",
+      "location": "Mt. Kenya",
+      "description": "3-day summit attempt of Mt. Kenya via Naro Moru route.",
+      "date": "2025-08-10",
+      "difficulty": "Hard",
+      "category": "Mountain",
+      "photos": ["https://i.pinimg.com/736x/69/f7/08/69f7085cb158155114c8a0f734d2681d.jpg", "https://i.pinimg.com/736x/d3/98/af/d398af381a6d68f324723a91b18ca8be.jpg", "https://i.pinimg.com/1200x/d7/51/1b/d7511b103119b143fbe58bb4cce93c3a.jpg"],
+      "route": {
+        "coordinates": [[-0.1522, 37.3084], [-0.1453, 37.3200], [-0.1321, 37.3333]]
+      }
+    },
+    {
+      "id": 2,
+      "title": "Karura Forest Walk",
+      "location": "Nairobi",
+      "description": "Easy forest walk with waterfalls and caves.",
+      "date": "2025-08-12",
+      "difficulty": "Easy",
+      "category": "Forest",
+      "photos": ["https://i.pinimg.com/736x/ac/ed/a2/aceda2de66c82efcfd39a130c458453e.jpg", "https://i.pinimg.com/736x/39/21/0d/39210df4716494fb7ec1270f5e1ec95d.jpg", "https://i.pinimg.com/1200x/76/7b/5f/767b5f892ed1092926437e52b0e09fae.jpg"],
+      "route": {
+        "coordinates": [[-1.2325, 36.8219], [-1.2332, 36.8280]]
+      }
+    },
+    {
+      "id": 3,
+      "title": "Ngong Hills Ridge Hike",
+      "location": "Ngong",
+      "description": "Moderate hike along scenic windmills and ridges.",
+      "date": "2025-08-15",
+      "difficulty": "Medium",
+      "category": "Hill",
+      "photos": ["https://i.pinimg.com/736x/70/c2/40/70c240f2774f77776000a590badc4cb9.jpg", "https://i.pinimg.com/1200x/75/17/57/751757782d54f484719063e837308186.jpg", "https://i.pinimg.com/736x/b8/8c/2e/b88c2ecad0e1db202576d3a1bf02ee6c.jpg"],
+      "route": {
+        "coordinates": [[-1.3833, 36.6500], [-1.3900, 36.6600], [-1.3950, 36.6700]]
+      }
+    },
+    {
+      "id": 4,
+      "title": "Hell's Gate Canyon Trek",
+      "location": "Naivasha",
+      "description": "Adventure hike with gorge walk and wildlife.",
+      "date": "2025-08-18",
+      "difficulty": "Medium",
+      "category": "Canyon",
+      "photos": ["https://i.pinimg.com/736x/b0/25/2f/b0252fbed85b9e3f9fe9183f03bcd7aa.jpg", "https://i.pinimg.com/1200x/e3/a3/41/e3a3419a5dd1b66b2bbc58b3b1b23952.jpg", "https://i.pinimg.com/736x/b6/e1/92/b6e1921b99c52643b046eed2c504210c.jpg"],
+      "route": {
+        "coordinates": [-0.9057, 36.3755]
+      }
+    },
+    {
+      "id": 5,
+      "title": "Aberdare Moorlands Trek",
+      "location": "Aberdare National Park",
+      "description": "Trek through high altitude moorlands.",
+      "date": "2025-08-22",
+      "difficulty": "Hard",
+      "category": "Forest",
+      "photos": ["https://i.pinimg.com/736x/72/4e/d9/724ed9ece169b616976c50a4fa64eab3.jpg", "https://i.pinimg.com/1200x/bc/98/17/bc981759dbe77747671af57fa1b857fc.jpg", "https://i.pinimg.com/736x/13/78/84/137884299e17ec78665ee2163f4d9bc4.jpg"],
+      "route": {
+        "coordinates": [-0.4167, 36.7167]
+      }
+    },
+    {
+      "id": 6,
+      "title": "Mt. Longonot Crater Hike",
+      "location": "Naivasha",
+      "description": "Crater rim loop hike with epic views.",
+      "date": "2025-08-25",
+      "difficulty": "Medium",
+      "category": "Mountain",
+      "photos": ["https://i.pinimg.com/1200x/07/58/da/0758da779b55ba499ff939757e36b77c.jpg", "https://i.pinimg.com/1200x/d6/88/62/d688629fa7e08b90217b370f9ca289f3.jpg", "https://i.pinimg.com/736x/58/ef/16/58ef16738f8ee6cc31e662559910ed64.jpg"],
+      "route": {
+        "coordinates": [-0.9145, 36.4567]
+      }
+    },
+    {
+      "id": 7,
+      "title": "Oloolua Nature Trail",
+      "location": "Karen",
+      "description": "Short shaded hike with river and waterfall.",
+      "date": "2025-08-29",
+      "difficulty": "Easy",
+      "category": "Forest",
+      "photos": ["https://i.pinimg.com/736x/37/8b/4a/378b4a3ccf5de9e480fcf773f300c8c7.jpg", "https://i.pinimg.com/736x/78/42/cc/7842ccc842db102a7ed1c851fe85b22d.jpg", "https://i.pinimg.com/1200x/92/5f/8f/925f8f2aba38943d800cbbab41aae54d.jpg"],
+      "route": {
+        "coordinates": [-1.3476, 36.7151]
+      }
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "expeditionId": 1,
+      "userId": 1,
+      "username": "Newton",
+      "rating": 5,
+      "comment": "Tough but rewarding!",
+      "date": "2025-08-12"
+    },
+    {
+      "id": 2,
+      "expeditionId": 2,
+      "userId": 2,
+      "username": "Bonfas",
+      "rating": 4,
+      "comment": "Peaceful and well-shaded.",
+      "date": "2025-08-13"
+    },
+    {
+      "id": 3,
+      "expeditionId": 3,
+      "userId": 3,
+      "username": "Marsha",
+      "rating": 5,
+      "comment": "Loved the windmills!",
+      "date": "2025-08-15"
+    },
+    {
+      "id": 4,
+      "expeditionId": 6,
+      "userId": 3,
+      "username": "Marsha",
+      "rating": 4,
+      "comment": "Steep but fun hike.",
+      "date": "2025-08-26"
+    }
+  ],
+  "badges": [
+    {
+      "id": 1,
+      "title": "Explorer",
+      "pointsRequired": 50,
+      "icon": "/badges/explorer.png"
+    },
+    {
+      "id": 2,
+      "title": "Mountain Master",
+      "pointsRequired": 100,
+      "icon": "/badges/mountain.png"
+    },
+    {
+      "id": 3,
+      "title": "Trail Blazer",
+      "pointsRequired": 75,
+      "icon": "/badges/trailblazer.png"
+    },
+    {
+      "id": 4,
+      "title": "Forest Friend",
+      "pointsRequired": 60,
+      "icon": "/badges/forest.png"
+    },
+    {
+      "id": 5,
+      "title": "Canyon Crawler",
+      "pointsRequired": 90,
+      "icon": "/badges/canyon.png"
+    }
+  ]
+}
