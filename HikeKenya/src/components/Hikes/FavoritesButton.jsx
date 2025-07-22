@@ -14,6 +14,16 @@ useEffect (() => {
     });
 }, [userId, trailId]
 
+//function to handle clicking 
+const handleToggleFavorite = () => {
+    fetch(`htpp://localhost:3000/users/${userId}`)
+    .then((res) => res.json)
+    .then((user) => {
+        const updatefavorites = isFavorite ? user.favorites.filter((id) => id !== trailId)
+        : [...user.favorites, trailId];
+    })
+}
+
   return{
 
   }
