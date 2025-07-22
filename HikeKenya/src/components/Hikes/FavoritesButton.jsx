@@ -38,7 +38,7 @@ const handleToggleFavorite = () => {
 
   return (
     <button onClick={handleToggleFavorite}>
-        {isFavorite ? '💖 Unfavorite' : '🤍 Favorite'}
+        {isFavorite ? '🤍 Unfavorite' : '💖 Favorite'}
     </button>
   );
 }

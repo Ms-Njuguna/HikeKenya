@@ -1,42 +1,63 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Newton",
       "email": "newton@example.com",
       "password": "1234",
-      "joinedtrails": [1, 3],
-      "badges": ["Explorer", "Mountain Master"],
+      "joinedtrails": [
+        1,
+        3
+      ],
+      "badges": [
+        "Explorer",
+        "Mountain Master"
+      ],
       "points": 120,
-      "payments" : [],
-      "favorites" : []
+      "payments": [],
+      "favorites": [
+        3
+      ]
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Bonfas ",
       "email": "bonfas@example.com",
       "password": "abcd",
-      "joinedtrails": [2, 4, 5],
-      "badges": ["Trail Blazer"],
+      "joinedtrails": [
+        2,
+        4,
+        5
+      ],
+      "badges": [
+        "Trail Blazer"
+      ],
       "points": 80,
-      "payments" : [],
-      "favorites" : []
+      "payments": [],
+      "favorites": []
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Marsha",
       "email": "marsha@example.com",
       "password": "pass123",
-      "joinedtrails": [1, 6, 7],
-      "badges": ["Explorer", "Forest Friend"],
+      "joinedtrails": [
+        1,
+        6,
+        7
+      ],
+      "badges": [
+        "Explorer",
+        "Forest Friend"
+      ],
       "points": 105,
-      "payments" : [],
-      "favorites" : []
+      "payments": [],
+      "favorites": []
     }
   ],
   "trails": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Mt. Kenya Summit Trek",
       "location": "Mt. Kenya",
       "description": "3-day summit attempt of Mt. Kenya via Naro Moru route.",
@@ -44,11 +65,56 @@
       "difficulty": "Hard",
       "category": "Mountain",
       "price": 3000,
-      "photos": ["https://i.pinimg.com/736x/69/f7/08/69f7085cb158155114c8a0f734d2681d.jpg", "https://i.pinimg.com/736x/d3/98/af/d398af381a6d68f324723a91b18ca8be.jpg", "https://i.pinimg.com/1200x/d7/51/1b/d7511b103119b143fbe58bb4cce93c3a.jpg"],
-      "route": [[-0.1507, 37.0500], [-0.1450, 37.0550], [-0.1400, 37.0600], [-0.1350, 37.0650], [-0.1300, 37.0700], [-0.1250, 37.0750], [-0.1350, 37.0650], [-0.1400, 37.0600], [-0.1450, 37.0550], [-0.1507, 37.0500]]
+      "photos": [
+        "https://i.pinimg.com/736x/69/f7/08/69f7085cb158155114c8a0f734d2681d.jpg",
+        "https://i.pinimg.com/736x/d3/98/af/d398af381a6d68f324723a91b18ca8be.jpg",
+        "https://i.pinimg.com/1200x/d7/51/1b/d7511b103119b143fbe58bb4cce93c3a.jpg"
+      ],
+      "route": [
+        [
+          -0.1507,
+          37.05
+        ],
+        [
+          -0.145,
+          37.055
+        ],
+        [
+          -0.14,
+          37.06
+        ],
+        [
+          -0.135,
+          37.065
+        ],
+        [
+          -0.13,
+          37.07
+        ],
+        [
+          -0.125,
+          37.075
+        ],
+        [
+          -0.135,
+          37.065
+        ],
+        [
+          -0.14,
+          37.06
+        ],
+        [
+          -0.145,
+          37.055
+        ],
+        [
+          -0.1507,
+          37.05
+        ]
+      ]
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Karura Forest Walk",
       "location": "Nairobi",
       "description": "Easy forest walk with waterfalls and caves.",
@@ -56,11 +122,56 @@
       "difficulty": "Easy",
       "category": "Forest",
       "price": 500,
-      "photos": ["https://i.pinimg.com/736x/ac/ed/a2/aceda2de66c82efcfd39a130c458453e.jpg", "https://i.pinimg.com/736x/39/21/0d/39210df4716494fb7ec1270f5e1ec95d.jpg", "https://i.pinimg.com/1200x/76/7b/5f/767b5f892ed1092926437e52b0e09fae.jpg"],
-      "route": [[-1.2325, 36.8219], [-1.2330, 36.8230], [-1.2340, 36.8250], [-1.2350, 36.8270], [-1.2360, 36.8285], [-1.2355, 36.8300], [-1.2345, 36.8280], [-1.2335, 36.8260], [-1.2325, 36.8230], [-1.2325, 36.8219]]
+      "photos": [
+        "https://i.pinimg.com/736x/ac/ed/a2/aceda2de66c82efcfd39a130c458453e.jpg",
+        "https://i.pinimg.com/736x/39/21/0d/39210df4716494fb7ec1270f5e1ec95d.jpg",
+        "https://i.pinimg.com/1200x/76/7b/5f/767b5f892ed1092926437e52b0e09fae.jpg"
+      ],
+      "route": [
+        [
+          -1.2325,
+          36.8219
+        ],
+        [
+          -1.233,
+          36.823
+        ],
+        [
+          -1.234,
+          36.825
+        ],
+        [
+          -1.235,
+          36.827
+        ],
+        [
+          -1.236,
+          36.8285
+        ],
+        [
+          -1.2355,
+          36.83
+        ],
+        [
+          -1.2345,
+          36.828
+        ],
+        [
+          -1.2335,
+          36.826
+        ],
+        [
+          -1.2325,
+          36.823
+        ],
+        [
+          -1.2325,
+          36.8219
+        ]
+      ]
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Ngong Hills Ridge Hike",
       "location": "Ngong",
       "description": "Moderate hike along scenic windmills and ridges.",
@@ -68,11 +179,56 @@
       "difficulty": "Medium",
       "category": "Hill",
       "price": 1500,
-      "photos": ["https://i.pinimg.com/736x/70/c2/40/70c240f2774f77776000a590badc4cb9.jpg", "https://i.pinimg.com/1200x/75/17/57/751757782d54f484719063e837308186.jpg", "https://i.pinimg.com/736x/b8/8c/2e/b88c2ecad0e1db202576d3a1bf02ee6c.jpg"],
-      "route": [[-1.4051, 36.6381], [-1.4000, 36.6400], [-1.3950, 36.6420], [-1.3900, 36.6440], [-1.3850, 36.6460], [-1.3800, 36.6480], [-1.3750, 36.6460], [-1.3800, 36.6440], [-1.3850, 36.6420],[-1.3900, 36.6385]]
+      "photos": [
+        "https://i.pinimg.com/736x/70/c2/40/70c240f2774f77776000a590badc4cb9.jpg",
+        "https://i.pinimg.com/1200x/75/17/57/751757782d54f484719063e837308186.jpg",
+        "https://i.pinimg.com/736x/b8/8c/2e/b88c2ecad0e1db202576d3a1bf02ee6c.jpg"
+      ],
+      "route": [
+        [
+          -1.4051,
+          36.6381
+        ],
+        [
+          -1.4,
+          36.64
+        ],
+        [
+          -1.395,
+          36.642
+        ],
+        [
+          -1.39,
+          36.644
+        ],
+        [
+          -1.385,
+          36.646
+        ],
+        [
+          -1.38,
+          36.648
+        ],
+        [
+          -1.375,
+          36.646
+        ],
+        [
+          -1.38,
+          36.644
+        ],
+        [
+          -1.385,
+          36.642
+        ],
+        [
+          -1.39,
+          36.6385
+        ]
+      ]
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Hell's Gate Canyon Trek",
       "location": "Naivasha",
       "description": "Adventure hike with gorge walk and wildlife.",
@@ -80,11 +236,48 @@
       "difficulty": "Medium",
       "category": "Canyon",
       "price": 2000,
-      "photos": ["https://i.pinimg.com/736x/b0/25/2f/b0252fbed85b9e3f9fe9183f03bcd7aa.jpg", "https://i.pinimg.com/1200x/e3/a3/41/e3a3419a5dd1b66b2bbc58b3b1b23952.jpg", "https://i.pinimg.com/736x/b6/e1/92/b6e1921b99c52643b046eed2c504210c.jpg"],
-      "route": [[-0.9147, 36.3925], [-0.9090, 36.3910], [-0.9050, 36.3870], [-0.9010, 36.3830], [-0.8970, 36.3860], [-0.8930, 36.3890], [-0.8910, 36.3915], [-0.9147, 36.3925]]
+      "photos": [
+        "https://i.pinimg.com/736x/b0/25/2f/b0252fbed85b9e3f9fe9183f03bcd7aa.jpg",
+        "https://i.pinimg.com/1200x/e3/a3/41/e3a3419a5dd1b66b2bbc58b3b1b23952.jpg",
+        "https://i.pinimg.com/736x/b6/e1/92/b6e1921b99c52643b046eed2c504210c.jpg"
+      ],
+      "route": [
+        [
+          -0.9147,
+          36.3925
+        ],
+        [
+          -0.909,
+          36.391
+        ],
+        [
+          -0.905,
+          36.387
+        ],
+        [
+          -0.901,
+          36.383
+        ],
+        [
+          -0.897,
+          36.386
+        ],
+        [
+          -0.893,
+          36.389
+        ],
+        [
+          -0.891,
+          36.3915
+        ],
+        [
+          -0.9147,
+          36.3925
+        ]
+      ]
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Aberdare Moorlands Trek",
       "location": "Aberdare National Park",
       "description": "Trek through high altitude moorlands.",
@@ -92,11 +285,48 @@
       "difficulty": "Hard",
       "category": "Forest",
       "price": 2500,
-      "photos": ["https://i.pinimg.com/736x/72/4e/d9/724ed9ece169b616976c50a4fa64eab3.jpg", "https://i.pinimg.com/1200x/bc/98/17/bc981759dbe77747671af57fa1b857fc.jpg", "https://i.pinimg.com/736x/13/78/84/137884299e17ec78665ee2163f4d9bc4.jpg"],
-      "route": [[-0.4620, 36.7300], [-0.4550, 36.7350], [-0.4475, 36.7400], [-0.4400, 36.7350], [-0.4350, 36.7300], [-0.4425, 36.7250], [-0.4500, 36.7200], [-0.4620, 36.7300]]
+      "photos": [
+        "https://i.pinimg.com/736x/72/4e/d9/724ed9ece169b616976c50a4fa64eab3.jpg",
+        "https://i.pinimg.com/1200x/bc/98/17/bc981759dbe77747671af57fa1b857fc.jpg",
+        "https://i.pinimg.com/736x/13/78/84/137884299e17ec78665ee2163f4d9bc4.jpg"
+      ],
+      "route": [
+        [
+          -0.462,
+          36.73
+        ],
+        [
+          -0.455,
+          36.735
+        ],
+        [
+          -0.4475,
+          36.74
+        ],
+        [
+          -0.44,
+          36.735
+        ],
+        [
+          -0.435,
+          36.73
+        ],
+        [
+          -0.4425,
+          36.725
+        ],
+        [
+          -0.45,
+          36.72
+        ],
+        [
+          -0.462,
+          36.73
+        ]
+      ]
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "Mt. Longonot Crater Hike",
       "location": "Naivasha",
       "description": "Crater rim loop hike with epic views.",
@@ -104,11 +334,44 @@
       "difficulty": "Medium",
       "category": "Mountain",
       "price": 2000,
-      "photos": ["https://i.pinimg.com/1200x/07/58/da/0758da779b55ba499ff939757e36b77c.jpg", "https://i.pinimg.com/1200x/d6/88/62/d688629fa7e08b90217b370f9ca289f3.jpg", "https://i.pinimg.com/736x/58/ef/16/58ef16738f8ee6cc31e662559910ed64.jpg"],
-      "route": [[-0.8908, 36.4732], [-0.9050, 36.4610], [-0.9120, 36.4535], [-0.9165, 36.4472], [-0.9200, 36.4430], [-0.9150, 36.4550], [-0.8908, 36.4732] ]
+      "photos": [
+        "https://i.pinimg.com/1200x/07/58/da/0758da779b55ba499ff939757e36b77c.jpg",
+        "https://i.pinimg.com/1200x/d6/88/62/d688629fa7e08b90217b370f9ca289f3.jpg",
+        "https://i.pinimg.com/736x/58/ef/16/58ef16738f8ee6cc31e662559910ed64.jpg"
+      ],
+      "route": [
+        [
+          -0.8908,
+          36.4732
+        ],
+        [
+          -0.905,
+          36.461
+        ],
+        [
+          -0.912,
+          36.4535
+        ],
+        [
+          -0.9165,
+          36.4472
+        ],
+        [
+          -0.92,
+          36.443
+        ],
+        [
+          -0.915,
+          36.455
+        ],
+        [
+          -0.8908,
+          36.4732
+        ]
+      ]
     },
     {
-      "id": 7,
+      "id": "7",
       "title": "Oloolua Nature Trail",
       "location": "Karen",
       "description": "Short shaded hike with river and waterfall.",
@@ -116,13 +379,46 @@
       "difficulty": "Easy",
       "category": "Forest",
       "price": 700,
-      "photos": ["https://i.pinimg.com/736x/37/8b/4a/378b4a3ccf5de9e480fcf773f300c8c7.jpg", "https://i.pinimg.com/736x/78/42/cc/7842ccc842db102a7ed1c851fe85b22d.jpg", "https://i.pinimg.com/1200x/92/5f/8f/925f8f2aba38943d800cbbab41aae54d.jpg"],
-      "route": [[-1.3579, 36.7144], [-1.3598, 36.7124], [-1.3615, 36.7135], [-1.3628, 36.7160], [-1.3612, 36.7182], [-1.3590, 36.7168], [-1.3579, 36.7144]]
+      "photos": [
+        "https://i.pinimg.com/736x/37/8b/4a/378b4a3ccf5de9e480fcf773f300c8c7.jpg",
+        "https://i.pinimg.com/736x/78/42/cc/7842ccc842db102a7ed1c851fe85b22d.jpg",
+        "https://i.pinimg.com/1200x/92/5f/8f/925f8f2aba38943d800cbbab41aae54d.jpg"
+      ],
+      "route": [
+        [
+          -1.3579,
+          36.7144
+        ],
+        [
+          -1.3598,
+          36.7124
+        ],
+        [
+          -1.3615,
+          36.7135
+        ],
+        [
+          -1.3628,
+          36.716
+        ],
+        [
+          -1.3612,
+          36.7182
+        ],
+        [
+          -1.359,
+          36.7168
+        ],
+        [
+          -1.3579,
+          36.7144
+        ]
+      ]
     }
   ],
   "reviews": [
     {
-      "id": 1,
+      "id": "1",
       "expeditionId": 1,
       "userId": 1,
       "username": "Newton",
@@ -131,7 +427,7 @@
       "date": "2025-08-12"
     },
     {
-      "id": 2,
+      "id": "2",
       "expeditionId": 2,
       "userId": 2,
       "username": "Bonfas",
@@ -140,7 +436,7 @@
       "date": "2025-08-13"
     },
     {
-      "id": 3,
+      "id": "3",
       "expeditionId": 3,
       "userId": 3,
       "username": "Marsha",
@@ -149,7 +445,7 @@
       "date": "2025-08-15"
     },
     {
-      "id": 4,
+      "id": "4",
       "expeditionId": 6,
       "userId": 3,
       "username": "Marsha",
@@ -160,31 +456,31 @@
   ],
   "badges": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Explorer",
       "pointsRequired": 50,
       "icon": "/badges/explorer.png"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Mountain Master",
       "pointsRequired": 100,
       "icon": "/badges/mountain.png"
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Trail Blazer",
       "pointsRequired": 75,
       "icon": "/badges/trailblazer.png"
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Forest Friend",
       "pointsRequired": 60,
       "icon": "/badges/forest.png"
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Canyon Crawler",
       "pointsRequired": 90,
       "icon": "/badges/canyon.png"
