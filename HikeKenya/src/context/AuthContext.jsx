@@ -6,11 +6,15 @@ const AuthProvider = ({ content }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const login = () => setIsAuthenticated(true);
-  const Signup = () => setIsAuthenticated(true)
+  const Signup = () => setIsAuthenticated(true);
   const logout = () => setIsAuthenticated(false);
 
-  return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout,Signup }}>
+return (
+  <AuthContext.Provider value={{ isAuthenticated, login, logout, Signup }}>
+  ...
+
+
+
       {content}
     </AuthContext.Provider>
   );
