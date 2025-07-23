@@ -22,6 +22,7 @@ const handleToggleFavorite = () => {
         const updatedFavorites = isFavorite ? user.favorites.filter((id) => id !== trailId)
         : [...user.favorites, trailId]; //Update favorites
 
+        // Update user data on the server
       fetch(`http://localhost:3000/users/${userId}`, {
         method: 'PATCH',
         headers: {
@@ -31,12 +32,12 @@ const handleToggleFavorite = () => {
     })
         .then((res) => res.json())
         .then(() => {
-          setIsFavorite(!isFavorite);
+          setIsFavorite(!isFavorite); // Toggle state to update button label
           if (onToggle) onToggle();
         });
       }) 
     };
-
+  // Return JSX and render button depending on state
   return (
     <button onClick={handleToggleFavorite}>
         {isFavorite ? '🤍 Unfavorite' : '💖 Favorite'}
