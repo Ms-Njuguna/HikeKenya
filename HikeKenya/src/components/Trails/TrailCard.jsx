@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import HikeCarousel from "./HikeCarousel";
+import TrailCarousel from "./TrailCarousel";
 import JoinAdventureButton from "./JoinAdventureButton";
 import FavoritesButton from "./FavoritesButton";
 
