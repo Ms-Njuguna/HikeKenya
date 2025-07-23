@@ -12,7 +12,7 @@ const Navbar = () => {
       <Link to="/">Home</Link>
       {isAuthenticated ? (
         <>
-          <Link to="/Dashboard">Dashboard</Link>
+          <Link to="/dashboard">Dashboard</Link>
           <button onClick={logout}>Logout</button>
         </>
       ) : (

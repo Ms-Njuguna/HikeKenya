@@ -1,5 +1,6 @@
 import React from "react";
 import UserInfo from './components/Dashboard/UserInfo';
+import Badges from "../components/Dashboard/Badges";
 
 function Dashboard({ badges, users}) {
     return (
@@ -10,6 +11,13 @@ function Dashboard({ badges, users}) {
                     return(
                         <UserInfo name={user.name} email={user.email} points={user.points}/>
                     )
+                })}
+            </div>
+            <div>
+                {users.map(user => {
+                    return (
+                        <Badges user={user} badges={badges}/>
+                    );
                 })}
             </div>
         </diV>
