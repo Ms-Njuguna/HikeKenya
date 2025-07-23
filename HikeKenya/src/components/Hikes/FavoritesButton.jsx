@@ -32,6 +32,7 @@ const handleToggleFavorite = () => {
         .then((res) => res.json())
         .then(() => {
           setIsFavorite(!isFavorite);
+          if (onToggle) onToggle();
         });
       }) 
     };
