@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from "react";
 
-function ({ userId, hikeId, onJoin }) {
+function JoinHikeButton({ userId, hikeId, onJoin }) {
     
     const [joined, setJoined] = useState(false);
     
@@ -17,14 +17,14 @@ function ({ userId, hikeId, onJoin }) {
 
         fetch(`http://localhost:3000/users/${userId}`, {
             method: "PATCH",
-            headers: {"Content-Type : application/json"},
-            body: JSON.stringify({ joinedHikes: updated}) 
+            headers: {"Content-Type" : "application/json"},
+            body: JSON.stringify({ joinedHikes: updated }) 
         })
         .then((res) => res.json())
-        .then((data) => setJoined(data.joinedHikes));
+        .then((data) => {setJoined(data.joinedHikes);
          onJoin && onJoin();
-        
-    }
+        });
+    }    
     
     return (
         <button onClick={handleJoinClick}>
@@ -32,3 +32,5 @@ function ({ userId, hikeId, onJoin }) {
         </button>
     );
 }
+
+export default JoinHikeButton; 
