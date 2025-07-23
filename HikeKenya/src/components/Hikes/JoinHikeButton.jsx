@@ -2,7 +2,7 @@ import React, { useEffect, useState} from "react";
 
 function JoinHikeButton({ userId, hikeId, onJoin }) {
     
-    const [joined, setJoined] = useState(false);
+    const [joined, setJoined] = useState([]);
     
     useEffect(() => {
         fetch(`http://localhost:3000/users/${userId}`)
@@ -27,7 +27,9 @@ function JoinHikeButton({ userId, hikeId, onJoin }) {
     }    
     
     return (
-        <button onClick={handleJoinClick}>
+        <button onClick={handleJoinClick}
+        className={`px-3 py-1 rounded ${joined.includes(hikeId) ? "bg-gray-300" : "bg-green-500 text-white"}`}
+        disabled={joined.includes(hikeId)}>
             {joined.includes(hikeId) ? "Joined ✅" : "Join Hike"}
         </button>
     );
