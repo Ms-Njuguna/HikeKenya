@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { AuthContext } from './AuthContext';
+import  Link  from 'react-router-dom';
+import AuthContext from './AuthContext';
+
+
 
 const Navbar = () => {
   const { isAuthenticated, logout } = useContext(AuthContext);
@@ -10,7 +12,7 @@ const Navbar = () => {
       <Link to="/">Home</Link>
       {isAuthenticated ? (
         <>
-          <Link to="/profile">Profile</Link>
+          <Link to="/Dashboard">Dashboard</Link>
           <button onClick={logout}>Logout</button>
         </>
       ) : (
