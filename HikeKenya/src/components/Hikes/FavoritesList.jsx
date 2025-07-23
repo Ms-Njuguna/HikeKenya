@@ -14,6 +14,7 @@ useEffect(() =>{
     .catch((err) => console.error("Error loading user:", err));    
 }, [userId,]);
 
+// UseEffect to fetch the trails & filter only the favorited ones
 useEffect(() => {
     fetch(`http://localhost:3000/trails`)
     .then((res) => res.json())
@@ -24,7 +25,7 @@ useEffect(() => {
     .catch((err) => console.error("Error loading trails:", err));
 }, [userFavorites]);
 
-// Refetch favorites when a toggle happens
+// Refresh favorites when a toggle happens
 const refreshFavorites = () => {
     fetch(`http://localhost:3000/users/${userId}`)
     .then((res) => res.json())
@@ -34,11 +35,11 @@ const refreshFavorites = () => {
 return (
     <div className="p-4 border-t mt-4">
         <h2 className="text-2xl font-semibold text-green-700">Your Favorites</h2>
-        {favoriteTrails.length === 0 ? (
+        {favoriteTrails.length === 0 ? ( // Conditional rendering (show message if no favorites)
             <p className="text-gray-500">No favorites yet!</p>
         ) : (
             <ul className="mt-2 space-y-2">
-                {favoriteTrails.map((trail) => (
+                {favoriteTrails.map((trail) => ( //Render each trail with it's name, add toggle button & refresh list on toggle 
                     <li key={trail.id} className="flex justify-between items-center">
                         <span>{trail.name}</span>
                         <FavoriteButton
