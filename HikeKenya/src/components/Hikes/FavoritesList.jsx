@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import FavoriteButton from "./FavoritesButton";
 
 // Function to get the user's favorites
-function favoriteList ({ userId }) {
+function FavoriteList ({ userId }) {
     const [favoriteTrails, setFavoriteTrails] = useState([]);
     const [userFavorites, setUserFavorites] = useState([]);
 
@@ -31,18 +31,18 @@ const handleFavoriteChange = () => {
 }
 
 return (
-    <div classname="p-4 border-t mt-4">
-        <h2 classname="text-2xl font-semibold text-green-700">Your Favorites</h2>
+    <div className="p-4 border-t mt-4">
+        <h2 className="text-2xl font-semibold text-green-700">Your Favorites</h2>
         {favoriteTrails.length === 0 ? (
             <p className="text-gray-500">No favorites yet!</p>
         ) : (
-            <ul classname="mt-2 space-y-2">
+            <ul className="mt-2 space-y-2">
                 {favoriteTrails.map((trail) => (
-                    <li key={trail.id} classname="flex justify-between items-center">
+                    <li key={trail.id} className="flex justify-between items-center">
                         <span>{trail.name}</span>
                         <FavoriteButton
                           userId={userId}
-                          trailId={trail.Id}
+                          trailId={trail.id}
                           onToggle={handleFavoriteChange}
                         />
                     </li>
@@ -53,4 +53,4 @@ return (
   );
 }
 
-export default favoriteList;
+export default FavoriteList;
