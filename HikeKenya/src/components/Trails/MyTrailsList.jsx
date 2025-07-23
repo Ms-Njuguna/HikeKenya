@@ -42,7 +42,7 @@ function MyTrailsList ({ userId }) {
                         <li key={trail.id} className="border p-4 rounded shadow">
                           <h3 className="text-xl font-semibold">{trail.name}</h3>
                           <p>{trail.description}</p>
-                          <button className="mt-2 bg-gree-500 text-white px-3 py-1 rounded" 
+                          <button className="mt-2 bg-green-500 text-white px-3 py-1 rounded" 
                           onClick={() => setSelectedTrail(trail)}>
                             Pay with M-pesa
                             </button> 
