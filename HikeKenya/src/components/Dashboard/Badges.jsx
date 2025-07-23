@@ -1,7 +1,7 @@
 import React from "react";
 
-const Badges = ({ userPoints, allBadges }) => {
-  const earned = allBadges.filter(b => userPoints >= b.pointsRequired);
+const Badges = ({ user, badges }) => {
+  const earned = badges.filter(b => user.points >= b.pointsRequired);
 
   return (
     <div className="flex flex-wrap gap-4">
@@ -19,3 +19,4 @@ const Badges = ({ userPoints, allBadges }) => {
 };
 
 export default Badges;
+
