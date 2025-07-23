@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 
 //Function component to receive 'userId' and 'trailId' as props
 
-function FavoriteButton ( {userId, trailId} ) {
+function FavoritesButton ( {userId, trailId} ) {
     const [isFavorite, setIsFavorite] = useState(false)
 
 //To fetch when component loads
@@ -45,4 +45,4 @@ const handleToggleFavorite = () => {
   );
 }
 
-export default FavoriteButton;
+export default FavoritesButton;

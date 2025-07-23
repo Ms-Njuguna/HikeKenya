@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import FavoriteButton from "./FavoritesButton";
+import FavoritesButton from "./FavoritesButton";
 
 // Function to get the user's favorites
-function FavoriteList ({ userId }) {
+function FavoritesList ({ userId }) {
     const [favoriteTrails, setFavoriteTrails] = useState([]);
     const [userFavorites, setUserFavorites] = useState([]);
 
@@ -55,4 +55,4 @@ return (
   );
 }
 
-export default FavoriteList;
+export default FavoritesList;
