@@ -31,14 +31,26 @@ const handleFavoriteChange = () => {
 }
 
 return (
-    <div>
-        <h2></h2>
-
-        <ul>
-            <li></li>
-        </ul>
+    <div classname="p-4 border-t mt-4">
+        <h2 classname="text-2xl font-semibold text-green-700">Your Favorites</h2>
+        {favoriteTrails.length === 0 ? (
+            <p className="text-gray-500">No favorites yet!</p>
+        ) : (
+            <ul classname="mt-2 space-y-2">
+                {favoriteTrails.map((trail) => (
+                    <li key={trail.id} classname="flex justify-between items-center">
+                        <span>{trail.name}</span>
+                        <FavoriteButton
+                          userId={userId}
+                          trailId={trail.Id}
+                          onToggle={handleFavoriteChange}
+                        />
+                    </li>
+                ))}
+            </ul>
+        )}
     </div>
-);
+  );
 }
 
 export default favoriteList;
