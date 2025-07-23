@@ -10,21 +10,22 @@ function FavoriteList ({ userId }) {
 useEffect(() =>{
     fetch(`http://localhost:3000/users/${userId}`)
     .then((res) => res.json())
-    .then((user) => {
-        setUserFavorites(user.favorites);
+    .then((user) => setUserFavorites(user.favorites))
+    .catch((err) => console.error("Error loading user:", err));    
+}, [userId,]);
 
-        return fetch("http://localhost:3000/trails");
-    })
+useEffect(() => {
+    fetch(`http://localhost:3000/trails`)
     .then((res) => res.json())
     .then((trails) => {
-        const favs = trails.filter ((trail) => userFavorites.includes(trail.id));
+        const favs = trails.filter((trail) => userFavorites.includes(trail.id));
         setFavoriteTrails(favs);
     })
-    .catch((err) => console.error("Error loading favorites:", err));
-}, [userId, userFavorites]);
+    .catch((err) => console.error("Error loading trails:", err));
+}, [userFavorites]);
 
 // Refetch favorites when a toggle happens
-const handleFavoriteChange = () => {
+const refreshFavorites = () => {
     fetch(`http://localhost:3000/users/${userId}`)
     .then((res) => res.json())
     .then((user) => setUserFavorites(user.favorites));
@@ -43,7 +44,7 @@ return (
                         <FavoriteButton
                           userId={userId}
                           trailId={trail.id}
-                          onToggle={handleFavoriteChange}
+                          onToggle={refreshFavorites}
                         />
                     </li>
                 ))}
