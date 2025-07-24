@@ -59,8 +59,39 @@ function MpesaModal({ trail, onClose }) {
         console.error("Payment failed", err);
         setError("Something went wrong. Try again.");
     });
-};
 
-return (
-    
-)
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-md relative">
+        <button onClick={onClose} className="absolute top-2 right-4 text-gray-600 text-xl">&times;</button>
+        <h2 className="text-xl font-bold mb-2">Pay with M-pesa or Airtel Money</h2>
+        <p className="mb-4 text-gray-700">
+            Trail: <strong>{trail.title}</strong><br />
+            Amount: <strong>KES {trail.price}</strong>
+        </p>
+        <form onSubmit={handleSubmit} className="space-y-4"></form>
+          <div>
+            <label htmlFor="phone" className="block text-sm font-medium">Phone Number</label>
+            <input 
+            type="tel"
+            id="phone"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="e.g. 0722 123 456" 
+            className="w-full border p-2 rounded"
+            />
+          </div>
+          {error && <p className="text-red-600 text-sm">{error}</p>}
+          {success && <p className="text-green-600 text-sm">Payment successful ✅</p>}
+          <button
+          type="submit"
+          className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+          >
+            Confirm Payment
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+}
