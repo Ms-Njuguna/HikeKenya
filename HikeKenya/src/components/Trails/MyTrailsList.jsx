@@ -68,12 +68,18 @@ function MyTrailsList ({ userId }) {
                           <h3 className="text-xl font-semibold">{trail.name}</h3>
                           <p>{trail.description}</p>
                           {trail && trail.name && (
+                            <>
                           <button className="mt-2 bg-green-500 text-white px-3 py-1 rounded" 
                           onClick={() => setSelectedTrail(trail)}>
                             Pay with M-pesa
                           </button>
 
-                          <button 
+                          <button
+                            className={`mt-2 px-3 py-1 rounded ${
+                                attendedTrails.includes(trail.id)
+                                ? "bg-gray-400 cursor-not-allowed"
+                                : "bg-blue-600 text-white"
+                            }`}    
                             onClick={() => handleMarkAsAttended(trail.id)}
                             disabled={attendedTrails.includes(trail.id)}
                             >
@@ -81,6 +87,7 @@ function MyTrailsList ({ userId }) {
                              ? "Already Attended ✅"
                              : "Mark as Attended"}   
                             </button>
+                            </>
                           )} 
                         </li>
                     ))}
