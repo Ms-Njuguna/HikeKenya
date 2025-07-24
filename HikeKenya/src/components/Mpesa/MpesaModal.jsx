@@ -13,13 +13,12 @@ function MpesaModal({ trail, onClose }) {
     };
 
     const handleSubmit = (e) => {
-        e.preventdefault();
+        e.preventDefault();
 
         if (!isValidPhoneNumber(phone)) {
             setError("Enter a valid phone number (e.g 0722 123 456 or 0116 123 456)");
             return;
         }
-    }
 
     const userId = localStorage.getItem("userId");
 
@@ -35,7 +34,7 @@ function MpesaModal({ trail, onClose }) {
             date: new Date().toISOString(),
         };
 
-        const updatePayments = [...(user.payments || []), newPayment]; // Merge new payments with any existing payments
+        const updatedPayments = [...(user.payments || []), newPayment]; // Merge new payments with any existing payments
 
         // Send updated payment list to server via PATCH
         return fetch(`http://localhost:3000/users/${userId}`, {
@@ -43,23 +42,23 @@ function MpesaModal({ trail, onClose }) {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ payments: updatePayments }),
+            body: JSON.stringify({ payments: updatedPayments }),
         });
     })
     .then((res) => res.json())
     .then(() => {
-        setSuccess(true)
+        setSuccess(true);
         setError(""); // If PATCH is successful, show success message & clear any error
 
         setTimeout(() => {
-            onclose();
+            onClose();
         }, 2000);
     })
     .catch((err) => {
         console.error("Payment failed", err);
         setError("Something went wrong. Try again.");
     });
-
+ };  
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -70,7 +69,7 @@ function MpesaModal({ trail, onClose }) {
             Trail: <strong>{trail.title}</strong><br />
             Amount: <strong>KES {trail.price}</strong>
         </p>
-        <form onSubmit={handleSubmit} className="space-y-4"></form>
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="phone" className="block text-sm font-medium">Phone Number</label>
             <input 
