@@ -331,26 +331,8 @@
       "pointsRequired": 90,
       "icon": "/badges/canyon.png"
     }
-  ],
+  
 
-  "ImageIcons": [
-    {
-      "id": 1,
-      "name": "user_icon",
-      "description": "User name SVG icon",
-      "url": "https://www.svgrepo.com/show/7621/user-name.svg"
-    },
-    {
-      "id": 2,
-      "name": "email_icon",
-      "description": "Email/envelope SVG icon",
-      "url": "https://www.svgrepo.com/show/45476/email.svg"
-    },
-    {
-      "id": 3,
-      "name": "password_icon",
-      "description": "Password/security lock icon",
-      "url": "https://www.svgrepo.com/show/29340/password.svg"
-    }
+
   ]
 }
