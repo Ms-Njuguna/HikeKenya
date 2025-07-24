@@ -1,5 +1,5 @@
 import React from "react";
-import UserInfo from './components/Dashboard/UserInfo';
+import UserInfo from '../components/Dashboard/UserInfo';
 import Badges from "../components/Dashboard/Badges";
 
 function Dashboard({ badges, users}) {
