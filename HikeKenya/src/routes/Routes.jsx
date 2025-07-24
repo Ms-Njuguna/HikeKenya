@@ -6,14 +6,14 @@ import Login from '../pages/Login';
 import Signup from '../pages/Signup';
 import Payment from '../pages/Payment'
 
-const AppRoutes= () => {
+const AppRoutes= ({trails, users, badges, reviews}) => {
     return(
         <Routes>
-            <Route path='/' element={<Home />}/>
-            <Route path='/login' element={<Login />}/>
-            <Route path='/signup' element={<Signup />}/>
+            <Route path='/' element={<Home trails={trails} reviews={reviews}/>}/>
+            <Route path='/login' element={<Login users={users}/>}/>
+            <Route path='/signup' element={<Signup users={users}/>}/>
 
-            <Route path='/dashboard' element={<ProtectedRoute><Dashboard /></ProtectedRoute>}/> 
+            <Route path='/dashboard' element={<ProtectedRoute><Dashboard badges={badges} users={users}/></ProtectedRoute>}/> 
             <Route path='/payment' element={<ProtectedRoute><Payment /></ProtectedRoute>}/>
         </Routes>
     );

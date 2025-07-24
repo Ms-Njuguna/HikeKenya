@@ -1,9 +1,9 @@
 import React from "react";
 
-function Payment() {
+function Signup({ users }) {
     return(
-        <div>This is the payment page</div>
+        <div>This is the sign up page</div>
     )
 }
 
-export default Payment;
+export default Signup;

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Home() {
+function Home({ trails, reviews }) {
     return(
         <div>This is the Home Page or Landing Page</div>
     );

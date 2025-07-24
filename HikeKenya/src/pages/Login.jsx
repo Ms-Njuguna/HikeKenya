@@ -1,6 +1,6 @@
 import React from "react";
 
-function Login() {
+function Login({ users }) {
     return(
         <div>This is the log in page</div>
     )
