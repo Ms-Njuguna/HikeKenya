@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import FavoritesButton from "./FavoritesButton";
 
 // Function to get the user's favorites
-function FavoritesList ({ userId }) {
+function FavoritesList ({ userId, trails }) {
     const [favoriteTrails, setFavoriteTrails] = useState([]);
     const [userFavorites, setUserFavorites] = useState([]);
 
@@ -14,16 +14,11 @@ useEffect(() =>{
     .catch((err) => console.error("Error loading user:", err));    
 }, [userId,]);
 
-// UseEffect to fetch the trails & filter only the favorited ones
+// UseEffect to filter only favorite trails from the trail prop (fetched in App.jsx)
 useEffect(() => {
-    fetch(`http://localhost:3000/trails`)
-    .then((res) => res.json())
-    .then((trails) => {
         const favs = trails.filter((trail) => userFavorites.includes(trail.id));
         setFavoriteTrails(favs);
-    })
-    .catch((err) => console.error("Error loading trails:", err));
-}, [userFavorites]);
+}, [userFavorites, trails]);
 
 // Refresh favorites when a toggle happens
 const refreshFavorites = () => {
