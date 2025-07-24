@@ -34,5 +34,17 @@ function MpesaModal({ trail, onClose }) {
             phone: phone,
             date: new Date().toISOString(),
         };
+
+        const updatePayments = [...(user.payments || []), newPayment]; // Merge new payments with any existing payments
+
+        // Send updated payment list to server via PATCH
+        return fetch(`http://localhost:3000/users/${userId}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ payments: updatePayments }),
+        });
     })
+    
 }
