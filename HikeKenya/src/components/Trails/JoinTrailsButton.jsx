@@ -17,7 +17,7 @@ function JoinTrailsButton({ userId, trailId, onJoin }) {
         if (joined.includes(trailId)) return;
 
         const updated = [...joined, trailId];
-
+a
         // Send PATCH request to update the users joined trails (backend)
         fetch(`http://localhost:3000/users/${userId}`, {
             method: "PATCH",
