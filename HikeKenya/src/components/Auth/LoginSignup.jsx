@@ -1,10 +1,9 @@
-
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./LoginSignup.css";
-import user_icon from "./ImageIcons/user-name-svgrepo-com.svg";
-import email_icon from "./ImageIcons/email-svgrepo-com.svg";
-import password_icon from "./ImageIcons/password-protection-privacy-access-verification-code-svgrepo-com.svg";
-import { useAuth } from "../../context/AuthContext";
+import user_icon from "../../ImageIcons/user-name-svgrepo-com.svg";
+import email_icon from "../../ImageIcons/email-svgrepo-com.svg";
+import password_icon from '../../ImageIcons/password-protection-privacy-access-verification-code-svgrepo-com.svg';
+import { AuthContext } from "../../context/AuthContext";
 
 const LoginSignup = () => {
   const [action, setAction] = useState("Sign Up");
@@ -12,7 +11,7 @@ const LoginSignup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { user, error, login, signup, logout } = useAuth();
+  const { user, error, login, signup, logout } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
