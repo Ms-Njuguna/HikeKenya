@@ -15,7 +15,8 @@
       ],
       "points": 120,
       "payments": [],
-      "favorites": []
+      "favorites": [],
+      "attendedTrails": []
     },
     {
       "id": "2",
@@ -32,7 +33,8 @@
       ],
       "points": 80,
       "payments": [],
-      "favorites": []
+      "favorites": [],
+      "attendedTrails": []
     },
     {
       "id": "3",
@@ -50,7 +52,8 @@
       ],
       "points": 105,
       "payments": [],
-      "favorites": []
+      "favorites": [],
+      "attendedTrails": []
     }
   ],
   "trails": [
