@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 
 //Function component to receive 'userId' and 'trailId' as props
 
-function FavoritesButton ( {userId, trailId} ) {
+function FavoritesButton ( {userId, trailId, onToggle} ) {
     const [isFavorite, setIsFavorite] = useState(false)
 
 //To fetch when component loads
