@@ -19,7 +19,6 @@ function Home({ trails, reviews }) {
         <div>
            <Navbar />
            <TrailSearchBar searchTerm={searchTerm} onSearch={handleSearch} />
-           <h1>This is the Home Page or Landing Page</h1> 
            <TrailsContainer trails={filteredResults} reviews={reviews} />
         </div>
     );

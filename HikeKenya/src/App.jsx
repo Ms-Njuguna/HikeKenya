@@ -66,7 +66,6 @@ function App() {
 
   return (
     <div>
-      <h1 className="text-4xl font-bold text-green-800 shadow-md text-center">Welcome to Hike Kenya</h1>
       <AppRoutes trails={trails} badges={badges} reviews={reviews}/> 
     </div>
   )
