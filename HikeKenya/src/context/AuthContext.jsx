@@ -3,10 +3,13 @@ import React, { createContext, useState } from "react";
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => {
+    const storedUser = localStorage.getItem("user");
+    return storedUser ? JSON.parse(storedUser) : null;
+  });
+
   const [error, setError] = useState(null);
   const isAuthenticated = !!user;
-
 
   const login = async (email, password) => {
     try {
@@ -19,6 +22,7 @@ const AuthProvider = ({ children }) => {
       }
 
       setUser(data[0]);
+      localStorage.setItem("user", JSON.stringify(data[0])); // ✅ Save user
       setError(null);
     } catch (err) {
       setError("Something went wrong during login.");
@@ -37,7 +41,7 @@ const AuthProvider = ({ children }) => {
 
       const newUser = {
         id: Date.now().toString(),
-        name: email.split("@")[0], // fallback if name field is blank
+        name: email.split("@")[0],
         email,
         password,
         joinedTrails: [],
@@ -57,6 +61,7 @@ const AuthProvider = ({ children }) => {
 
       const createdUser = await postRes.json();
       setUser(createdUser);
+      localStorage.setItem("user", JSON.stringify(createdUser)); // ✅ Save user
       setError(null);
     } catch (err) {
       setError("Something went wrong during sign up.");
@@ -65,6 +70,7 @@ const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setUser(null);
+    localStorage.removeItem("user"); // ✅ Clear localStorage on logout
   };
 
   return (

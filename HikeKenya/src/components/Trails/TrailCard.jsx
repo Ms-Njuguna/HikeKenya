@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import TrailCarousel from "./TrailCarousel";
 import JoinTrailsButton from "./JoinTrailsButton";
 import FavoritesButton from "./FavoritesButton";
 import WeatherCard from "./../Weather/WeatherCard";
 import MapPreview from "./../Map/MapPreview";
+import Reviews from "./Reviews"; // Import the new Reviews component
+import { AuthContext } from "../../context/AuthContext";
 
-const TrailCard = ({ trail, userId }) => {
+const TrailCard = ({ trail }) => {
+  const { user } = useContext(AuthContext);
+  const userId = user?.id;
+
   const [expanded, setExpanded] = useState(false);
 
   const toggleExpand = () => setExpanded(prev => !prev);
@@ -44,9 +49,10 @@ const TrailCard = ({ trail, userId }) => {
               />
             )}
 
-            {trail.route?.coordinates && Array.isArray(trail.route.coordinates) && (
-              <MapPreview title={trail.title} route={trail.route.coordinates} />
-            )}
+            <MapPreview title={trail.title} route={trail.route} />
+
+            {/* Render the Reviews component here */}
+            <Reviews trailId={trail.id} />
           </div>
         )}
 
@@ -54,7 +60,7 @@ const TrailCard = ({ trail, userId }) => {
           onClick={toggleExpand}
           className="mt-4 text-green-600 underline text-sm"
         >
-          {expanded ? "Show Less" : "Show More"}
+          {expanded ? "Show Less" : "Show More Details"}
         </button>
       </div>
     </div>

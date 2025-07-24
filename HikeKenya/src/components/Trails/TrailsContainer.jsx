@@ -1,14 +1,15 @@
 import React from "react";
 import TrailCard from "./TrailCard";
 
-function TrailsContainer({ trails }) {
+function TrailsContainer({ trails}) {
     return (
         <div>
             {trails.map((trail) => {
                 return (
-                    <TrailCard key={trail.id} trail={trail}/>
+                    <TrailCard key={trail.id} trail={trail} />
                 );
             })}
+
         </div>
     );
 };

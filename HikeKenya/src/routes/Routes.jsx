@@ -8,7 +8,7 @@ import Payment from '../pages/Payment'
 const AppRoutes= ({trails, badges, reviews}) => {
     return(
         <Routes>
-            <Route path='/' element={<Home trails={trails} reviews={reviews}/>}/>
+            <Route path='/' element={<Home trails={trails} reviews={reviews} />}/>
             <Route path='/login-signup' element={<LoginSignupPage />}/>
 
             <Route path='/dashboard' element={<ProtectedRoute><Dashboard badges={badges} /></ProtectedRoute>}/> 

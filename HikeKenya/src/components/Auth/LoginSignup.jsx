@@ -105,7 +105,7 @@ const LoginSignup = () => {
           <div className="toggle-container">
             <button
               type="button"
-              className={`submit ${action === "Sign Up" ? "gray" : ""}`}
+              className={`submit ${action === "Sign Up" ? "gray" : ""} mr-2`}
               onClick={() => switchTo("Sign Up")}
             >
               Sign Up
@@ -120,6 +120,15 @@ const LoginSignup = () => {
           </div>
         </form>
       )}
+      <div className="continue-guest">
+        <button
+        type="button"
+        className="submit continue-btn"
+        onClick={() => navigate("/")}
+        >
+          Continue without signing in
+        </button>
+      </div>
     </div>
   );
 };
