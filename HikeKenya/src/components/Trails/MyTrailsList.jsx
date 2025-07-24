@@ -7,13 +7,15 @@ function MyTrailsList ({ userId }) {
     const [joinedTrails, setJoinedTrails] = useState([]);
     const [trails, setTrails] = useState([]);
     const [selectedTrail, setSelectedTrail] = useState(null);
+    const [attendedTrails, setAttendedTrails] = useState([])
     
-    // Use effect to fetch user data & get trails they have joined
+    // Use effect to fetch user data joined and attended trails
     useEffect(() => {
         fetch(`http://localhost:3000/users/${userId}`)
         .then((res) => res.json())
         .then((data) => {
             setJoinedTrails(data.joinedTrails || []);
+            setAttendedTrails(data.attendedTrails || []);
         });
     }, [userId]);
 
@@ -29,6 +31,29 @@ function MyTrailsList ({ userId }) {
     const joinedTrailDetails = trails.filter(trail =>
         joinedTrails.includes(trail.id)
      );
+
+     // Function to filter out only the trails the user has attended
+     function handleMarkAsAttended(trailId) {
+        if (attendedTrails.includes(trailId)) {
+            alert("You already marked this trail as attended.")
+            return;
+        }
+
+        const updated = [...attendedTrails, trailId];
+
+        // Update the attended trails in the backend
+        fetch(`http://localhost:3000/users/${userId}`, {
+            method: "PATCH",
+            headers: {"Content-Type" : "application/json"},
+            body: JSON.stringify({attendedTrails: updated}),
+        })
+        .then((res) => res.json())
+        .then((updatedUser) => {
+            setAttendedTrails(updatedUser.attendedTrails || []);
+            alert("Trail marked as attended 🎉")
+        })
+        .catch(err => console.error("Error marking attended trail", err));
+     }
 
      // Return the UI
      return (
@@ -46,6 +71,15 @@ function MyTrailsList ({ userId }) {
                           <button className="mt-2 bg-green-500 text-white px-3 py-1 rounded" 
                           onClick={() => setSelectedTrail(trail)}>
                             Pay with M-pesa
+                          </button>
+
+                          <button 
+                            onClick={() => handleMarkAsAttended(trail.id)}
+                            disabled={attendedTrails.includes(trail.id)}
+                            >
+                             {attendedTrails.includes(trail.id)
+                             ? "Already Attended ✅"
+                             : "Mark as Attended"}   
                             </button>
                           )} 
                         </li>
