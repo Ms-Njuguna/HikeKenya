@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import MpesaModal from "./Mpesamodal";
+import MpesaModal from "../Mpesa/MpesaModal";
 
 // Function for myTrailList receiving userId as prop
 function MyTrailsList ({ userId }) {

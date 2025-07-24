@@ -1,18 +1,19 @@
-
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./LoginSignup.css";
-import user_icon from "./ImageIcons/user-name-svgrepo-com.svg";
-import email_icon from "./ImageIcons/email-svgrepo-com.svg";
-import password_icon from "./ImageIcons/password-protection-privacy-access-verification-code-svgrepo-com.svg";
-import { useAuth } from "../../context/AuthContext";
+import user_icon from "../../ImageIcons/user-name-svgrepo-com.svg";
+import email_icon from "../../ImageIcons/email-svgrepo-com.svg";
+import password_icon from '../../ImageIcons/password-protection-privacy-access-verification-code-svgrepo-com.svg';
+import { AuthContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const LoginSignup = () => {
   const [action, setAction] = useState("Sign Up");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const { user, error, login, signup, logout } = useAuth();
+  const { user, error, login, signup, logout } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,6 +23,12 @@ const LoginSignup = () => {
       await login(email, password);
     }
   };
+
+  useEffect(() => {
+    if (user) {
+      navigate("/dashboard");
+    }
+  }, [user, navigate]);
 
   const switchTo = (mode) => {
     setAction(mode);
@@ -118,12 +125,3 @@ const LoginSignup = () => {
 };
 
 export default LoginSignup;
-
-
-
-
-
-
-
-
-
