@@ -46,5 +46,21 @@ function MpesaModal({ trail, onClose }) {
             body: JSON.stringify({ payments: updatePayments }),
         });
     })
+    .then((res) => res.json())
+    .then(() => {
+        setSuccess(true)
+        setError(""); // If PATCH is successful, show success message & clear any error
+
+        setTimeout(() => {
+            onclose();
+        }, 2000);
+    })
+    .catch((err) => {
+        console.error("Payment failed", err);
+        setError("Something went wrong. Try again.");
+    });
+};
+
+return (
     
-}
+)
