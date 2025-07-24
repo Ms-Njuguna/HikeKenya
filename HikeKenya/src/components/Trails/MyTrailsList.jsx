@@ -69,7 +69,7 @@ function MyTrailsList ({ userId }) {
                           <p>{trail.description}</p>
                           {trail && trail.name && (
                             <>
-                          <button className="mt-2 bg-green-500 text-white px-3 py-1 rounded" 
+                          <button className="mt-2 bg-green-500 text-white px-3 py-1 rounded mr-2" 
                           onClick={() => setSelectedTrail(trail)}>
                             Pay with M-pesa
                           </button>
