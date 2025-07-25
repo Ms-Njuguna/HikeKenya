@@ -63,21 +63,54 @@
 
 ```FS
 src/
+├── App.jsx
+├── index.css
+├── main.jsx
+├── db.json
+
+├── context/
+│   └── AuthContext.jsx
+
 ├── components/
-│   ├── NavBar.jsx
-│   ├── TrailCard.jsx
-│   ├── MpesaModal.jsx
-│   ├── MyTrailsList.jsx
-│   ├── AttendedTrails.jsx
-│   └── ...other UI components
+│   ├── Auth/
+│   │   └── LoginForm.jsx
+│   │   └── RegisterForm.jsx
+│
+│   ├── Dashboard/
+│   │   └── StatsCard.jsx
+│
+│   ├── Map/
+│   │   └── TrailMap.jsx
+│
+│   ├── Mpesa/
+│   │   └── MpesaModal.jsx
+│
+│   ├── Payments/
+│   │   └── PaymentHistory.jsx
+│
+│   ├── Trails/
+│   │   └── TrailCard.jsx
+│   │   └── TrailList.jsx
+│   │   └── JoinTrailButton.jsx
+│
+│   ├── Weather/
+│   │   └── WeatherCard.jsx
+│
+│   └── NavBar.jsx
+
 ├── pages/
 │   ├── Home.jsx
-│   ├── Login.jsx
-│   ├── Signup.jsx
-│   └── Dashboard.jsx
-├── App.jsx
-├── main.jsx
-└── index.css
+│   ├── About.jsx
+│   ├── DashboardPage.jsx
+│   ├── TrailDetails.jsx
+
+├── routes/
+│   └── AppRoutes.jsx
+
+├── ImageIcons/
+│   └── HikerIcon.jsx
+│   └── TrailIcon.jsx
+
 ```
 
 ---
