@@ -1,20 +1,19 @@
 import React, { useEffect, useState, useContext } from "react";
 import MpesaModal from "../Mpesa/MpesaModal";
 import { AuthContext } from "../../context/AuthContext";
-import mpesaIcon from '../../ImageIcons/download.png'
+import mpesaIcon from '../../ImageIcons/download.png';
 
 function MyTrailsList() {
   const { user, setUser } = useContext(AuthContext);
   const userId = user?.id;
 
   const [joinedTrails, setJoinedTrails] = useState([]);
+  const [attendedTrails, setAttendedTrails] = useState([]);
   const [trails, setTrails] = useState([]);
   const [selectedTrail, setSelectedTrail] = useState(null);
-  const [attendedTrails, setAttendedTrails] = useState([]);
-  const [reviewInput, setReviewInput] = useState({}); // To manage review text for each trail
-  const [showReviewModal, setShowReviewModal] = useState(null); // To control review modal visibility
+  const [reviewInput, setReviewInput] = useState({});
+  const [showReviewModal, setShowReviewModal] = useState(null);
 
-  // Fetch user data (joined + attended trails)
   useEffect(() => {
     if (!userId) return;
 
@@ -22,58 +21,52 @@ function MyTrailsList() {
       .then((res) => res.json())
       .then((data) => {
         setJoinedTrails(data.joinedTrails || []);
-        setAttendedTrails(data.attendedTrails || []);
+        setAttendedTrails(data.attendedTrails || data.attended || []);
+        setUser(data); // update global user with latest data
       });
-  }, [userId]);
+  }, [userId, setUser]);
 
-  // Fetch all trails
   useEffect(() => {
     fetch("http://localhost:3000/trails")
       .then((res) => res.json())
       .then(setTrails)
-      .catch((error) => console.error("Failed to fetch trails", error));
+      .catch((err) => console.error("Failed to fetch trails:", err));
   }, []);
 
-  // Filter only joined trail details
-  const joinedTrailDetails = trails.filter((trail) =>
-    joinedTrails.includes(trail.id)
-  );
+  const hasPaidForTrail = (trailId) =>
+    Array.isArray(user?.payments) &&
+    user.payments.some((p) => String(p.trail) === String(trailId));
 
-  // 🔍 Check if user has paid for this trail
-  const hasPaidForTrail = (trailId) => {
-    return user?.payments?.some(
-      (payment) => parseInt(payment.trail) === trailId
-    );
+  const getTrailStatus = (trail) => {
+    const isAttended = attendedTrails.map(String).includes(String(trail.id));
+    const paid = hasPaidForTrail(trail.id);
+    const trailDate = new Date(trail.date);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    if (isAttended) return "attended";
+    if (!paid) return "not_paid";
+    if (trailDate > today) return "paid_upcoming";
+    return "paid_past";
   };
 
-  // ✅ Mark trail as attended (only adds points if paid and date has passed)
   const handleMarkAsAttended = (trail) => {
-    if (attendedTrails.includes(trail.id)) {
-      alert("You already marked this trail as attended.");
-      return;
-    }
-
     const trailDate = new Date(trail.date);
-    const currentDate = new Date();
-    currentDate.setHours(0, 0, 0, 0); // Normalize current date to compare with trail date
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
-    if (trailDate > currentDate) {
-      alert("You can only mark this trail as attended after the hike date has passed.");
+    if (trailDate > today) {
+      alert("You can only mark as attended after the hike date.");
       return;
     }
 
-    const isPaid = hasPaidForTrail(trail.id);
-    if (!isPaid) {
-      alert("You must pay for this trail before marking it as attended.");
+    if (!hasPaidForTrail(trail.id)) {
+      alert("Payment required before marking as attended.");
       return;
     }
 
     const updatedAttended = [...attendedTrails, trail.id];
-    let newPoints = user.points;
-
-    if (isPaid) {
-      newPoints += 10; // Change point value as needed
-    }
+    const newPoints = (user.points || 0) + 10;
 
     fetch(`http://localhost:3000/users/${userId}`, {
       method: "PATCH",
@@ -86,36 +79,29 @@ function MyTrailsList() {
       .then((res) => res.json())
       .then((updatedUser) => {
         setAttendedTrails(updatedUser.attendedTrails || []);
-        if (isPaid) {
-          const updated = { ...user, points: updatedUser.points };
-          setUser(updated);
-          localStorage.setItem("user", JSON.stringify(updated)); // optional
-        }
+        setUser(updatedUser);
+        localStorage.setItem("user", JSON.stringify(updatedUser));
+        setShowReviewModal(trail.id);
         alert("Marked as attended 🎉");
-        setShowReviewModal(trail.id); // Show review modal after marking attended
       })
-      .catch((err) => console.error("Error updating user", err));
+      .catch((err) => console.error("Error marking as attended:", err));
   };
 
   const handleReviewSubmit = (trailId) => {
-    const reviewText = reviewInput[trailId];
-    if (!reviewText || reviewText.trim() === "") {
-      alert("Please write something before submitting your review.");
-      return;
-    }
+    const comment = reviewInput[trailId]?.trim();
+    if (!comment) return alert("Please enter a review.");
 
     const review = {
-      userId: userId,
+      userId,
       userName: user?.name || "Anonymous",
-      comment: reviewText,
+      comment,
       date: new Date().toISOString(),
     };
 
-    // Find the trail to update its reviews
-    const trailToUpdate = trails.find(t => t.id === trailId);
-    if (!trailToUpdate) return;
+    const trail = trails.find((t) => t.id === trailId);
+    if (!trail) return;
 
-    const updatedReviews = [...(trailToUpdate.reviews || []), review];
+    const updatedReviews = [...(trail.reviews || []), review];
 
     fetch(`http://localhost:3000/trails/${trailId}`, {
       method: "PATCH",
@@ -124,92 +110,110 @@ function MyTrailsList() {
     })
       .then((res) => res.json())
       .then((updatedTrail) => {
-        // Update the trails state with the new review
-        setTrails(prevTrails =>
-          prevTrails.map(t => (t.id === trailId ? updatedTrail : t))
+        setTrails((prev) =>
+          prev.map((t) => (t.id === trailId ? updatedTrail : t))
         );
-        alert("Review submitted successfully! 🎉");
-        setReviewInput(prev => ({ ...prev, [trailId]: "" })); // Clear input
-        setShowReviewModal(null); // Close review modal
+        setShowReviewModal(null);
+        setReviewInput((prev) => ({ ...prev, [trailId]: "" }));
+        alert("Review submitted! ✅");
       })
-      .catch((err) => console.error("Error submitting review", err));
+      .catch((err) => console.error("Failed to submit review:", err));
   };
 
-  // UI Rendering
+  const joinedTrailDetails = trails.filter((trail) =>
+    joinedTrails.map(String).includes(String(trail.id))
+  );
+
   return (
     <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4">🗺️ My Trails</h2>
 
       {joinedTrailDetails.length === 0 ? (
-        <p>No trails joined yet</p>
+        <p className="text-gray-500">No joined trails yet!</p>
       ) : (
         <ul className="space-y-4">
           {joinedTrailDetails.map((trail) => {
-            const hasPaid = hasPaidForTrail(trail.id);
-            const isAttended = attendedTrails.includes(trail.id);
+            const status = getTrailStatus(trail);
             const trailDate = new Date(trail.date);
-            const currentDate = new Date();
-            currentDate.setHours(0, 0, 0, 0);
-            const isDatePassed = trailDate <= currentDate;
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const daysLeft = Math.ceil((trailDate - today) / (1000 * 60 * 60 * 24));
 
             return (
               <li key={trail.id} className="border p-4 rounded shadow">
-                <h3 className="text-xl font-semibold">{trail.title}</h3>
+                <h3 className="text-lg font-semibold">{trail.title}</h3>
                 <p>{trail.description}</p>
-                <p>Date: {trail.date}</p> {/* Display trail date */}
+                <p className="text-gray-500 text-sm">Date: {trail.date}</p>
 
-                <div className="flex gap-2 mt-3 flex-wrap">
-                  <button
-                    className={`mt-2 px-3 py-1 rounded ${hasPaid ? "bg-gray-400 cursor-not-allowed" : "bg-[#FAF7F2] border border-green-700 text-green-700 hover:bg-green-600 hover:text-[#FAF7F2]"}`}
-                    onClick={() => setSelectedTrail(trail)}
-                    disabled={hasPaid}
-                  >
-                    {hasPaid ? "Paid ✅" : <span className="flex items-center gap-2"><img src={mpesaIcon} alt="M-Pesa" className="h-5 w-5" /> Pay with M-pesa</span>}
-                  </button>
+                <div className="mt-3 space-x-2 flex flex-wrap items-center">
+                  {status === "not_paid" && (
+                    <button
+                      onClick={() => setSelectedTrail(trail)}
+                      className="bg-green-100 text-green-800 border border-green-600 px-3 py-1 rounded flex items-center gap-2 hover:bg-green-600 hover:text-white"
+                    >
+                      <img src={mpesaIcon} className="h-4 w-4" alt="Mpesa" />
+                      Pay with M-Pesa
+                    </button>
+                  )}
 
-                  <button
-                    className={`mt-2 px-3 py-1 rounded ${
-                      isAttended
-                        ? "bg-gray-400 cursor-not-allowed"
-                        : hasPaid && isDatePassed
-                        ? "bg-blue-600 text-white hover:bg-blue-700"
-                        : "bg-gray-400 cursor-not-allowed"
-                    }`}
-                    onClick={() => handleMarkAsAttended(trail)}
-                    disabled={isAttended || !hasPaid || !isDatePassed}
-                  >
-                    {isAttended
-                      ? "Already Attended ✅"
-                      : isDatePassed
-                      ? "Mark as Attended"
-                      : "Date Not Passed"}
-                  </button>
+                  {status === "paid_upcoming" && (
+                    <span className="text-sm text-gray-600">
+                      🕒 {daysLeft} day(s) remaining
+                    </span>
+                  )}
+
+                  {status === "paid_past" && (
+                    <button
+                      onClick={() => handleMarkAsAttended(trail)}
+                      className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
+                    >
+                      Mark as Attended
+                    </button>
+                  )}
+
+                  {status === "attended" && (
+                    <>
+                      <span className="text-green-600 font-medium flex items-center gap-1">
+                        ✅ Attended
+                      </span>
+                      <button
+                        onClick={() => setShowReviewModal(trail.id)}
+                        className="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700"
+                      >
+                        Leave a Review
+                      </button>
+                    </>
+                  )}
                 </div>
 
                 {showReviewModal === trail.id && (
-                  <div className="mt-4 p-4 border rounded bg-gray-50">
+                  <div className="mt-4 p-4 bg-gray-100 border rounded">
                     <h4 className="font-semibold mb-2">Write a Review</h4>
                     <textarea
                       className="w-full p-2 border rounded"
                       rows="3"
-                      placeholder="Share your experience..."
+                      placeholder="Share your hiking experience..."
                       value={reviewInput[trail.id] || ""}
                       onChange={(e) =>
-                        setReviewInput(prev => ({ ...prev, [trail.id]: e.target.value }))
+                        setReviewInput((prev) => ({
+                          ...prev,
+                          [trail.id]: e.target.value,
+                        }))
                       }
                     ></textarea>
-                    <button
-                      className="mt-2 bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700"
-                      onClick={() => handleReviewSubmit(trail.id)}
-                    >
-                      Submit Review
-                    </button>
-                    <button
-                      className="mt-2 ml-2 bg-gray-300 text-gray-800 px-3 py-1 rounded hover:bg-gray-400"
-                      onClick={() => setShowReviewModal(null)}
-                    >
-                      Cancel
-                    </button>
+                    <div className="mt-2 flex gap-2">
+                      <button
+                        onClick={() => handleReviewSubmit(trail.id)}
+                        className="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700"
+                      >
+                        Submit
+                      </button>
+                      <button
+                        onClick={() => setShowReviewModal(null)}
+                        className="bg-gray-400 text-white px-3 py-1 rounded hover:bg-gray-500"
+                      >
+                        Cancel
+                      </button>
+                    </div>
                   </div>
                 )}
               </li>
@@ -221,7 +225,15 @@ function MyTrailsList() {
       {selectedTrail && (
         <MpesaModal
           trail={selectedTrail}
-          onClose={() => setSelectedTrail(null)}
+          onClose={() => {
+            setSelectedTrail(null);
+            fetch(`http://localhost:3000/users/${userId}`)
+              .then((res) => res.json())
+              .then((data) => {
+                setUser(data);
+                setJoinedTrails(data.joinedTrails || []);
+              });
+          }}
         />
       )}
     </div>

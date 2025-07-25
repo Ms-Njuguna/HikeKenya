@@ -11,11 +11,11 @@ function Dashboard({ badges }) {
   const { user } = useContext(AuthContext);
 
   return (
-    <div className="min-h-screen bg-green-50">
+    <div className="min-h-screen">
       <Navbar />
 
       {user ? (
-        <div className="max-w-5xl mx-auto py-10 px-4 sm:px-6 lg:px-8 bg-white rounded-xl shadow-md border border-green-100">
+        <div className="max-w-5xl mx-auto my-[70px] py-10 px-4 sm:px-6 lg:px-8 bg-white rounded-xl shadow-md border border-green-100">
           {/* User Info */}
           <div className="pb-6">
             <UserInfo name={user.name} email={user.email} points={user.points} />
@@ -29,7 +29,7 @@ function Dashboard({ badges }) {
 
           {/* My Trails */}
           <div className="border-t border-gray-200 py-6">
-            <h2 className="text-lg font-semibold text-gray-700 mb-4">Joined Trails</h2>
+            <h2 className="text-lg font-semibold text-gray-700 mb-4">My Trails List</h2>
             <MyTrailsList />
           </div>
 

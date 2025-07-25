@@ -1,60 +1,101 @@
 import React, { useEffect, useState, useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import { toast } from 'sonner';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../ui/tooltip";
 
-
-// Function that receives UserId, trailId and onJoin
 function JoinTrailsButton({ trailId, onJoin }) {
-    const { user } = useContext(AuthContext);
-    const userId = user?.id;
-    
-    const [joined, setJoined] = useState([]);
-    const navigate = useNavigate();
-    
-    //Use effect to fetch user joined trails
-    useEffect(() => {
-        if (!userId) return;
+  const { user } = useContext(AuthContext);
+  const userId = user?.id;
 
-        fetch(`http://localhost:3000/users/${userId}`)
-        .then((res) => res.json())
-        .then((data) => setJoined(data.joinedTrails || [])); // Set joined trails or fallback to an empty array
-    }, [userId]);
-    
-    // Function to handle the join trail button
-    function handleJoinClick () {
-        if (!userId) {
-          navigate("/login-signup"); // 🔁 redirect unauthenticated users
-          return;
-        }
+  const [joined, setJoined] = useState([]);
+  const navigate = useNavigate();
 
-        if (joined.includes(trailId)) return;
+  useEffect(() => {
+    if (!userId) return;
 
-        const updated = [...joined, trailId];
+    fetch(`http://localhost:3000/users/${userId}`)
+      .then((res) => res.json())
+      .then((data) => setJoined(data.joinedTrails || []));
+  }, [userId]);
 
-        // Send PATCH request to update the users joined trails (backend)
-        fetch(`http://localhost:3000/users/${userId}`, {
-            method: "PATCH",
-            headers: {"Content-Type" : "application/json"},
-            body: JSON.stringify({ joinedTrails: updated }) 
-        })
-        .then((res) => res.json())
-        .then((data) => {setJoined(data.joinedTrails);
-         onJoin && onJoin(); // call onJoin callback to refresh UI and update the list
-        });
-    }   
-    
+  function handleJoinClick(e) {
+    e?.preventDefault();
+
     if (!userId) {
-      return <p className="text-sm text-gray-500">Log in to join this trail</p>;
+      navigate("/login-signup");
+      return;
     }
 
-    // Return Onclick Button (The button is disabled if user already joined trail (line 36))
-    return (
-        <button onClick={handleJoinClick}
-        className={`px-3 py-1 rounded ${joined.includes(trailId) ? "bg-gray-300" : "bg-green-500 text-white"}`} // If joined show gray button, otherwise green
-        disabled={joined.includes(trailId)}> 
-            {joined.includes(trailId) ? "Joined ✅" : "Join Trail"}
-        </button>
-    );
+    const normalizedJoined = joined.map(Number);
+
+    if (normalizedJoined.includes(Number(trailId))) return;
+
+    const updated = [...new Set([...normalizedJoined, Number(trailId)])];
+
+    fetch(`http://localhost:3000/users/${userId}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ joinedTrails: updated }),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to update joined trails");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setJoined(data.joinedTrails);
+        toast.success("Successfully joined trail!", {
+          description: "You’ll find it in your dashboard.",
+        });
+        onJoin && onJoin();
+      })
+      .catch((error) => {
+        console.error("Join trail error:", error);
+        toast.error("Could not join trail", {
+          description: error.message,
+        });
+      });
+  }
+
+  if (!userId) {
+    return <p className="text-sm text-gray-500">Log in to join this trail</p>;
+  }
+
+  const alreadyJoined = joined.includes(Number(trailId));
+
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <button
+            type="button"
+            onClick={handleJoinClick}
+            disabled={alreadyJoined}
+            className={`px-3 py-1 rounded ${
+              alreadyJoined
+                ? "bg-gray-300 text-black cursor-not-allowed"
+                : "bg-green-500 text-white hover:bg-green-600"
+            }`}
+          >
+            {alreadyJoined ? "Joined" : "Join Trail"}
+          </button>
+        </TooltipTrigger>
+        {alreadyJoined && (
+          <TooltipContent side="top">
+            Trail has already been added to your trail list in your dashboard! <br></br> You can check it out and pay for it! 
+          </TooltipContent>
+        )}
+      </Tooltip>
+    </TooltipProvider>
+  );
 }
+
 
 export default JoinTrailsButton; 

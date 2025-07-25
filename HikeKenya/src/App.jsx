@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import AppRoutes from './routes/Routes.jsx';
+import { Toaster, toast } from 'sonner';
 
 function App() {
 
@@ -66,6 +67,7 @@ function App() {
 
   return (
     <div>
+      <Toaster position="top-right" richColors closeButton expand={false}/>
       <AppRoutes trails={trails} badges={badges} reviews={reviews}/> 
     </div>
   )

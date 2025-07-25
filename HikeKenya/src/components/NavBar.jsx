@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-[#1F3B29]/95 shadow-md' : 'bg-transparent'}`}>
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-[310px] px-6 py-4 flex items-center justify-between">
         <Link to="/" className="text-xl font-serif text-[#D4AF37] tracking-wide">HikeKenya</Link>
         <div className="flex items-center gap-6 text-sm font-medium text-[#1F3B29]">
           {isAuthenticated ? (

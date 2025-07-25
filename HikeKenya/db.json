@@ -52,7 +52,7 @@
         1,
         6,
         7,
-        "2"
+        2
       ],
       "badges": [
         "Explorer",
@@ -73,90 +73,69 @@
       ],
       "badges": [],
       "points": 0,
+      "payments": [],
+      "favorites": [],
+      "attendedTrails": [
+        "1"
+      ]
+    },
+    {
+      "id": "1753448051868",
+      "name": "lisa",
+      "email": "lisa@example.com",
+      "password": "gf8syh/jwn%gv",
+      "joinedTrails": [
+        2,
+        3,
+        5
+      ],
+      "badges": [],
+      "points": 0,
       "payments": [
         {
-          "trail": "1",
-          "title": "Mt. Kenya Summit Trek",
-          "amount": 3000,
-          "phone": "0722123456",
-          "date": "2025-07-24T14:46:06.124Z"
+          "trail": 2,
+          "amount": 500,
+          "date": "2025-07-25"
         },
         {
-          "trail": "1",
-          "title": "Mt. Kenya Summit Trek",
-          "amount": 3000,
+          "trail": "2",
+          "title": "Karura Forest Walk",
+          "amount": 500,
           "phone": "0722123456",
-          "date": "2025-07-24T17:19:17.928Z"
+          "date": "2025-07-25T15:53:47.836Z"
         },
         {
-          "trail": "1",
-          "title": "Mt. Kenya Summit Trek",
-          "amount": 3000,
+          "trail": "2",
+          "title": "Karura Forest Walk",
+          "amount": 500,
           "phone": "0722123456",
-          "date": "2025-07-24T17:24:50.360Z"
-        },
-        {
-          "trail": "1",
-          "title": "Mt. Kenya Summit Trek",
-          "amount": 3000,
-          "phone": "0722123456",
-          "date": "2025-07-24T17:30:25.253Z"
-        },
-        {
-          "trail": "1",
-          "title": "Mt. Kenya Summit Trek",
-          "amount": 3000,
-          "phone": "0722123456",
-          "date": "2025-07-24T17:33:33.410Z"
+          "date": "2025-07-25T16:02:48.508Z"
         },
         {
           "trail": "3",
           "title": "Ngong Hills Ridge Hike",
           "amount": 1500,
           "phone": "0722123456",
-          "date": "2025-07-24T17:39:36.697Z"
+          "date": "2025-07-25T16:08:22.717Z"
         },
         {
-          "trail": "3",
-          "title": "Ngong Hills Ridge Hike",
-          "amount": 1500,
+          "trail": "2",
+          "title": "Karura Forest Walk",
+          "amount": 500,
           "phone": "0722123456",
-          "date": "2025-07-24T17:44:25.142Z"
+          "date": "2025-07-25T16:34:42.197Z"
         },
         {
-          "trail": "3",
-          "title": "Ngong Hills Ridge Hike",
-          "amount": 1500,
+          "trail": "5",
+          "title": "Aberdare Moorlands Trek",
+          "amount": 2500,
           "phone": "0722123456",
-          "date": "2025-07-24T17:46:36.002Z"
-        },
-        {
-          "trail": "3",
-          "title": "Ngong Hills Ridge Hike",
-          "amount": 1500,
-          "phone": "0722123456",
-          "date": "2025-07-24T17:54:30.427Z"
-        },
-        {
-          "trail": "3",
-          "title": "Ngong Hills Ridge Hike",
-          "amount": 1500,
-          "phone": "0722123456",
-          "date": "2025-07-24T17:55:53.542Z"
-        },
-        {
-          "trail": "3",
-          "title": "Ngong Hills Ridge Hike",
-          "amount": 1500,
-          "phone": "0722123456",
-          "date": "2025-07-24T17:56:57.271Z"
+          "date": "2025-07-25T16:42:30.972Z"
         }
       ],
       "favorites": [
-        "1"
-      ],
-      "attendedTrails": [
-        "1"
+        "5",
+        "4"
       ]
     }
   ],
@@ -232,8 +211,8 @@
       "id": "2",
       "title": "Karura Forest Walk",
       "location": "Nairobi",
-      "description": "Easy forest walk with waterfalls and caves.",
-      "date": "2025-07-12",
+      "description": "Easy forest walk with waterfalls ,caves and a biking route.",
+      "date": "2025-08-12",
       "difficulty": "Easy",
       "category": "Forest",
       "price": 500,

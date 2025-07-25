@@ -35,6 +35,8 @@ function Home({ trails, reviews }) {
         <div>
             <Navbar />
 
+            
+
       {/* Hero Section */}
       <section
         className="relative h-[70vh] bg-cover bg-center bg-no-repeat"

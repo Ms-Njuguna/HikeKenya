@@ -36,15 +36,21 @@ function FavoritesList () {
     }
 
     return (
-        <div className="p-4 border-t mt-4">
-           <h2 className="text-2xl font-semibold text-green-700">Your Favorites</h2>
+        <div className="p-4 mt-4">
            {favoriteTrails.length === 0 ? ( // Conditional rendering (show message if no favorites)
-               <p className="text-gray-500">No favorites yet!</p>
+               <p className="text-gray-400">No favorites yet!</p>
             ) : (
                <ul className="mt-2 space-y-2">
                     {favoriteTrails.map((trail) => ( //Render each trail with it's name, add toggle button & refresh list on toggle 
                         <li key={trail.id} className="flex justify-between items-center">
-                            <span>{trail.title}</span>
+                            <div className='flex flex-row gap-12'>
+                                <img src={trail.photos[1]} alt='favorite photo' className='rounded-[6px] h-40 w-40'></img>
+                                <div>
+                                    <h3>{trail.title}</h3>
+                                    <p>{trail.date}</p>
+                                    <small>Difficulty - {trail.difficulty}</small>
+                                </div>
+                            </div>
                             <FavoritesButton
                               userId={userId}
                               trailId={trail.id}
