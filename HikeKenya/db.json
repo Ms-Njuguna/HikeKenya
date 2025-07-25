@@ -17,11 +17,16 @@
       ],
       "points": 120,
       "payments": [],
+<<<<<<< HEAD
+      "favorites": [],
+      "attendedTrails": []
+=======
       "attended": [],
       "favorites": [
         "1",
         "2"
       ]
+>>>>>>> origin/development
     },
     {
       "id": "2",
@@ -38,8 +43,13 @@
       ],
       "points": 80,
       "payments": [],
+<<<<<<< HEAD
+      "favorites": [],
+      "attendedTrails": []
+=======
       "attended": [],
       "favorites": []
+>>>>>>> origin/development
     },
     {
       "id": "3",
@@ -57,6 +67,10 @@
       ],
       "points": 105,
       "payments": [],
+<<<<<<< HEAD
+      "favorites": [],
+      "attendedTrails": []
+=======
       "favorites": []
     },
     {
@@ -155,6 +169,7 @@
       "attendedTrails": [
         "1"
       ]
+>>>>>>> origin/development
     }
   ],
   "trails": [

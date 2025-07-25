@@ -1,3 +1,4 @@
+
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -22,7 +23,7 @@ function MpesaModal({ trail, onClose }) {
             setError("Enter a valid phone number (e.g 0722 123 456 or 0116 123 456)");
             return;
         }
-   
+
         // Fetch the users current data to update to update their payment history
         fetch(`http://localhost:3000/users/${userId}`)
         .then ((res) => res.json())
@@ -97,3 +98,4 @@ function MpesaModal({ trail, onClose }) {
 }
 
 export default MpesaModal;
+

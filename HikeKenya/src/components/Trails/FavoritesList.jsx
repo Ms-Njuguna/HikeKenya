@@ -17,6 +17,7 @@ function FavoritesList () {
       .catch((err) => console.error("Error loading user:", err));    
     }, [userId,]);
 
+
     // UseEffect to fetch the trails & filter only the favorited ones
     useEffect(() => {
        fetch(`http://localhost:3000/trails`)
