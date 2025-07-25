@@ -1,12 +1,21 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+
 
 //Function component to receive 'userId' and 'trailId' as props
 
-function FavoritesButton ( {userId, trailId, onToggle} ) {
-    const [isFavorite, setIsFavorite] = useState(false)
+function FavoritesButton ( {trailId} ) {
+  const { user } = useContext(AuthContext);
+  const userId = user?.id;
 
-//To fetch when component loads
-useEffect (() => {
+  const [isFavorite, setIsFavorite] = useState(false)
+  const navigate = useNavigate();
+
+  //To fetch when component loads
+  useEffect (() => {
+    if (!userId) return;
+
     fetch(`http://localhost:3000/users/${userId}`)
     .then((res) => res.json())
     .then((user) => {
@@ -14,8 +23,13 @@ useEffect (() => {
     });
   }, [userId, trailId]);
 
-//function to handle clicking 
-const handleToggleFavorite = () => {
+  //function to handle clicking 
+  const handleToggleFavorite = () => {
+    if (!userId) {
+      navigate("/login-signup"); // 🔁 redirect unauthenticated users
+      return;
+    }
+
     fetch(`http://localhost:3000/users/${userId}`) //Fetch user data
     .then((res) => res.json())
     .then((user) => {
