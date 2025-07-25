@@ -88,37 +88,32 @@ function MyTrailsList() {
   };
 
   const handleReviewSubmit = (trailId) => {
-    const comment = reviewInput[trailId]?.trim();
-    if (!comment) return alert("Please enter a review.");
+  const comment = reviewInput[trailId]?.trim();
+  if (!comment) return alert("Please enter a review.");
 
-    const review = {
-      userId,
-      userName: user?.name || "Anonymous",
-      comment,
-      date: new Date().toISOString(),
-    };
-
-    const trail = trails.find((t) => t.id === trailId);
-    if (!trail) return;
-
-    const updatedReviews = [...(trail.reviews || []), review];
-
-    fetch(`http://localhost:3000/trails/${trailId}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ reviews: updatedReviews }),
-    })
-      .then((res) => res.json())
-      .then((updatedTrail) => {
-        setTrails((prev) =>
-          prev.map((t) => (t.id === trailId ? updatedTrail : t))
-        );
-        setShowReviewModal(null);
-        setReviewInput((prev) => ({ ...prev, [trailId]: "" }));
-        alert("Review submitted! ✅");
-      })
-      .catch((err) => console.error("Failed to submit review:", err));
+  const newReview = {
+    trailId,
+    userId,
+    username: user?.name || "Anonymous",
+    comment,
+    rating: 5, // You can make this dynamic later
+    date: new Date().toISOString().split("T")[0] // Format: YYYY-MM-DD
   };
+
+  fetch(`http://localhost:3000/reviews`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(newReview),
+  })
+    .then((res) => res.json())
+    .then((savedReview) => {
+      alert("Review submitted! ✅");
+      setShowReviewModal(null);
+      setReviewInput((prev) => ({ ...prev, [trailId]: "" }));
+    })
+    .catch((err) => console.error("Failed to submit review:", err));
+};
+
 
   const joinedTrailDetails = trails.filter((trail) =>
     joinedTrails.map(String).includes(String(trail.id))

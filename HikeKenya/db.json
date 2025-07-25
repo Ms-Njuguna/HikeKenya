@@ -7,9 +7,7 @@
       "password": "G#v9Tm$2pLq!Xr7e",
       "joinedTrails": [
         1,
-        3,
-        "1",
-        "2"
+        3
       ],
       "badges": [
         "Explorer",
@@ -63,23 +61,6 @@
       "favorites": []
     },
     {
-      "id": "1753357526582",
-      "name": "patricia",
-      "email": "patricia@example.com",
-      "password": "sgyriwn638",
-      "joinedTrails": [
-        "1",
-        "3"
-      ],
-      "badges": [],
-      "points": 0,
-      "payments": [],
-      "favorites": [],
-      "attendedTrails": [
-        "1"
-      ]
-    },
-    {
       "id": "1753448051868",
       "name": "lisa",
       "email": "lisa@example.com",
@@ -92,20 +73,8 @@
         6
       ],
       "badges": [],
-      "points": 0,
+      "points": 10,
       "payments": [
-        {
-          "trail": 2,
-          "amount": 500,
-          "date": "2025-07-25"
-        },
-        {
-          "trail": "2",
-          "title": "Karura Forest Walk",
-          "amount": 500,
-          "phone": "0722123456",
-          "date": "2025-07-25T15:53:47.836Z"
-        },
         {
           "trail": "2",
           "title": "Karura Forest Walk",
@@ -121,37 +90,19 @@
           "date": "2025-07-25T16:08:22.717Z"
         },
         {
-          "trail": "2",
-          "title": "Karura Forest Walk",
-          "amount": 500,
-          "phone": "0722123456",
-          "date": "2025-07-25T16:34:42.197Z"
-        },
-        {
-          "trail": "5",
-          "title": "Aberdare Moorlands Trek",
-          "amount": 2500,
-          "phone": "0722123456",
-          "date": "2025-07-25T16:42:30.972Z"
-        },
-        {
           "trail": "1",
           "title": "Mt. Kenya Summit Trek",
           "amount": 3000,
           "phone": "0722123456",
-          "date": "2025-07-25T17:52:42.803Z"
-        },
-        {
-          "trail": "6",
-          "title": "Mt. Longonot Crater Hike",
-          "amount": 2000,
-          "phone": "0722123456",
-          "date": "2025-07-25T17:55:59.199Z"
+          "date": "2025-07-25T18:18:35.700Z"
         }
       ],
       "favorites": [
         "5",
         "4"
+      ],
+      "attendedTrails": [
+        "1"
       ]
     }
   ],
@@ -161,7 +112,7 @@
       "title": "Mt. Kenya Summit Trek",
       "location": "Mt. Kenya",
       "description": "3-day summit attempt of Mt. Kenya via Naro Moru route.",
-      "date": "2025-08-10",
+      "date": "2025-07-24",
       "difficulty": "Hard",
       "category": "Mountain",
       "price": 3000,
@@ -221,7 +172,15 @@
           "Carry rain gear",
           "Watch for slippery paths"
         ]
-      }
+      },
+      "reviews": [
+        {
+          "userId": "1753448051868",
+          "userName": "lisa",
+          "comment": "It was such an amazing experience. Totally recommend!!",
+          "date": "2025-07-25T18:19:52.768Z"
+        }
+      ]
     },
     {
       "id": "2",
@@ -622,6 +581,15 @@
       "rating": 4,
       "comment": "Steep but fun hike.",
       "date": "2025-08-26"
+    },
+    {
+      "id": "02be",
+      "trailId": "1",
+      "userId": "1753448051868",
+      "username": "lisa",
+      "comment": "Honestly, best experience eveeeeeer........",
+      "rating": 5,
+      "date": "2025-07-25"
     }
   ],
   "badges": [
