@@ -87,7 +87,9 @@
       "joinedTrails": [
         2,
         3,
-        5
+        5,
+        1,
+        6
       ],
       "badges": [],
       "points": 0,
@@ -131,6 +133,20 @@
           "amount": 2500,
           "phone": "0722123456",
           "date": "2025-07-25T16:42:30.972Z"
+        },
+        {
+          "trail": "1",
+          "title": "Mt. Kenya Summit Trek",
+          "amount": 3000,
+          "phone": "0722123456",
+          "date": "2025-07-25T17:52:42.803Z"
+        },
+        {
+          "trail": "6",
+          "title": "Mt. Longonot Crater Hike",
+          "amount": 2000,
+          "phone": "0722123456",
+          "date": "2025-07-25T17:55:59.199Z"
         }
       ],
       "favorites": [

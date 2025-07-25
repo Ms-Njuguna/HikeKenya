@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import MpesaModal from "../Mpesa/MpesaModal";
 import { AuthContext } from "../../context/AuthContext";
-import mpesaIcon from '../../ImageIcons/download.png';
+import MpesaAnimatedButton from '../ui/MpesaAnimatedButton';
 
 function MyTrailsList() {
   const { user, setUser } = useContext(AuthContext);
@@ -146,13 +146,7 @@ function MyTrailsList() {
 
                 <div className="mt-3 space-x-2 flex flex-wrap items-center">
                   {status === "not_paid" && (
-                    <button
-                      onClick={() => setSelectedTrail(trail)}
-                      className="bg-green-100 text-green-800 border border-green-600 px-3 py-1 rounded flex items-center gap-2 hover:bg-green-600 hover:text-white"
-                    >
-                      <img src={mpesaIcon} className="h-4 w-4" alt="Mpesa" />
-                      Pay with M-Pesa
-                    </button>
+                    <MpesaAnimatedButton onClick={() => setSelectedTrail(trail)} />
                   )}
 
                   {status === "paid_upcoming" && (

@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import mpesaIcon from '../../ImageIcons/download.png';
+import ConfettiExplosion from "react-confetti-explosion";
 
 function MpesaModal({ trail, onClose }) {
   const { user } = useContext(AuthContext);
@@ -81,7 +82,14 @@ function MpesaModal({ trail, onClose }) {
             />
           </div>
           {error && <p className="text-red-600 text-sm">{error}</p>}
-          {success && <p className="text-green-600 text-sm">Payment was successful ✅</p>}
+          {success &&
+           <>
+              <p className="text-green-600 text-sm mt-2">Payment was successful ✅</p>
+              <div className="absolute inset-0 flex justify-center items-center z-50">
+                <ConfettiExplosion force={0.8} duration={3000} particleCount={150} width={1600} zIndex={9999}/>
+              </div>
+            </>
+          }
           <button
             type="submit"
             className="bg-green-700 text-[#FAF7F2] px-4 py-2 rounded flex items-center justify-center gap-2"

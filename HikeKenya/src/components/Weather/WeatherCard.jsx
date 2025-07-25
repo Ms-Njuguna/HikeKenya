@@ -51,9 +51,9 @@ export default function WeatherCard({ temperature, condition, windSpeed, tips })
       </div>
 
       {/* Make this relatively positioned so HoverCardContent can be absolute */}
-      <HoverCard.Root>
+      <HoverCard.Root openDelay={0}>
         <HoverCardTrigger className="text-green-700 hover:text-green-900 transition-colors">
-          <Info size={18} className="cursor-pointer" />
+          <Info size={18} className="cursor-pointer faq-icon" />
         </HoverCardTrigger>
 
         <HoverCardContent
