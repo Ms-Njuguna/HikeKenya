@@ -38,7 +38,7 @@ const Reviews = ({ trailId }) => {
     }
 
     return (
-        <div className="mt-4 border-t pt-4">
+        <div className="mt-4 border-t border-gray-100 border-opacity-10 pt-4">
             <h4 className="text-lg font-semibold mb-2">Reviews</h4>
             {reviews.length === 0 ? (
                 <p className="text-gray-600 italic">No reviews yet for this trail.</p>

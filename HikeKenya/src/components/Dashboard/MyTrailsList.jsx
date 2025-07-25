@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import MpesaModal from "../Mpesa/MpesaModal";
 import { AuthContext } from "../../context/AuthContext";
+import mpesaIcon from '../../ImageIcons/download.png'
 
 function MyTrailsList() {
   const { user, setUser } = useContext(AuthContext);
@@ -159,11 +160,11 @@ function MyTrailsList() {
 
                 <div className="flex gap-2 mt-3 flex-wrap">
                   <button
-                    className={`mt-2 px-3 py-1 rounded ${hasPaid ? "bg-gray-400 cursor-not-allowed" : "bg-green-500 text-white hover:bg-green-600"}`}
+                    className={`mt-2 px-3 py-1 rounded ${hasPaid ? "bg-gray-400 cursor-not-allowed" : "bg-[#FAF7F2] border border-green-700 text-green-700 hover:bg-green-600 hover:text-[#FAF7F2]"}`}
                     onClick={() => setSelectedTrail(trail)}
                     disabled={hasPaid}
                   >
-                    {hasPaid ? "Paid ✅" : "Pay with M-pesa"}
+                    {hasPaid ? "Paid ✅" : <span className="flex items-center gap-2"><img src={mpesaIcon} alt="M-Pesa" className="h-5 w-5" /> Pay with M-pesa</span>}
                   </button>
 
                   <button

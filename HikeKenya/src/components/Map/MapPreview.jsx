@@ -13,18 +13,17 @@ export default function MapPreview({title, route}) {
     }, [route]);
 
     return (
-        <div className="my-4 shadow-lg border rounded-[12px] overflow-hidden  max-w-4xl mx-auto">
-            <h2 className="text-lg font-semibold p-2">{title}</h2>
+        <div className="my-6 shadow-lg border rounded-[12px] overflow-hidden  max-w-4xl mx-auto">
             <div style={{ height: "400px", width: "100%" }}>
                 <MapContainer center={center} zoom={13} scrollWheelZoom={false} style={{ height: "100%", width: "100%" }}>
                    <TileLayer
                    url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
                    attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
                    />
-                   <Marker position={center}>
+                   <Marker position={center} style={{ color: "olive"}}>
                       <Popup>{title}</Popup>
                    </Marker>
-                   {route && <Polyline positions={route} pathOptions={{ color: "green", weight: 10}}  />}
+                   {route && <Polyline positions={route} pathOptions={{ color: "olive", weight: 4}}  />}
                 </MapContainer>
             </div>
         </div>

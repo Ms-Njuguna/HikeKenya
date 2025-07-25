@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
 
 
 //Function component to receive 'userId' and 'trailId' as props
@@ -53,10 +54,11 @@ function FavoritesButton ( {trailId} ) {
     };
   // Return JSX and render button depending on state
   return (
-    <button onClick={handleToggleFavorite}>
-        {isFavorite ? '🤍 Unfavorite' : '💖 Favorite'}
+    <button onClick={handleToggleFavorite} className="flex items-center gap-2 text-sm text-green-700 hover:text-green-900">
+        {isFavorite ? (<> <BsHeartFill className="text-red-600"/> Remove from Favorites </> ) : (<> <BsHeart className="text-gray-600"/> Add to Favorites </>)}
     </button>
   );
 }
 
 export default FavoritesButton;
+

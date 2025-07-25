@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import mpesaIcon from '../../ImageIcons/download.png'
 
 function MpesaModal({ trail, onClose }) {
     const { user } = useContext(AuthContext);
@@ -83,12 +84,15 @@ function MpesaModal({ trail, onClose }) {
                         />
                     </div>
                     {error && <p className="text-red-600 text-sm">{error}</p>}
-                    {success && <p className="text-green-600 text-sm">Payment successful ✅</p>}
+                    {success && <p className="text-green-600 text-sm">Payment was successful ✅</p>}
                     <button
                     type="submit"
-                    className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                    className="bg-green-700 text-[#FAF7F2] px-4 py-2 rounded flex items-center justify-center gap-2"
                     >
-                       Confirm Payment
+                        <span className="flex items-center gap-2">
+                            <img src={mpesaIcon} alt="M-Pesa" className="h-5 w-5" /> 
+                            Confirm Payment
+                        </span>
                     </button>
                 </form>
             </div>

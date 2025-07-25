@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const TrailCarousel = ({ photos }) => {
@@ -7,20 +7,19 @@ const TrailCarousel = ({ photos }) => {
 
   const length = photos?.length || 0;
 
-  useEffect(() => {
-    startAutoSlide();
-    return () => stopAutoSlide();
-  }, [current]);
-
   const startAutoSlide = () => {
-    stopAutoSlide();
-    slideInterval.current = setInterval(() => {
-      setCurrent(prev => (prev === length - 1 ? 0 : prev + 1));
-    }, 5000); // Change slide every 4s
+    if (!slideInterval.current) {
+      slideInterval.current = setInterval(() => {
+        setCurrent(prev => (prev === length - 1 ? 0 : prev + 1));
+      }, 1500);
+    }
   };
 
   const stopAutoSlide = () => {
-    if (slideInterval.current) clearInterval(slideInterval.current);
+    if (slideInterval.current) {
+      clearInterval(slideInterval.current);
+      slideInterval.current = null;
+    }
   };
 
   const nextSlide = () => {
@@ -40,9 +39,16 @@ const TrailCarousel = ({ photos }) => {
   }
 
   return (
-    <div className="relative w-full max-w-3xl mx-auto overflow-hidden rounded-xl shadow-lg group">
+    <div
+      className="relative w-full max-w-3xl mx-auto overflow-hidden t-rounded-xl shadow-lg group"
+      onMouseEnter={startAutoSlide}
+      onMouseLeave={stopAutoSlide}
+    >
       {/* Slides */}
-      <div className="flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${current * 100}%)` }}>
+      <div
+        className="flex transition-transform duration-700 ease-in-out"
+        style={{ transform: `translateX(-${current * 100}%)` }}
+      >
         {photos.map((photo, index) => (
           <img
             key={index}

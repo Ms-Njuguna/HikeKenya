@@ -39,7 +39,9 @@
       "points": 80,
       "payments": [],
       "attended": [],
-      "favorites": []
+      "favorites": [
+        "1"
+      ]
     },
     {
       "id": "3",
@@ -49,7 +51,8 @@
       "joinedTrails": [
         1,
         6,
-        7
+        7,
+        "2"
       ],
       "badges": [
         "Explorer",
@@ -230,7 +233,7 @@
       "title": "Karura Forest Walk",
       "location": "Nairobi",
       "description": "Easy forest walk with waterfalls and caves.",
-      "date": "2025-08-12",
+      "date": "2025-07-12",
       "difficulty": "Easy",
       "category": "Forest",
       "price": 500,
@@ -631,51 +634,31 @@
       "id": "1",
       "title": "Explorer",
       "pointsRequired": 50,
-      "icon": "/badges/explorer.png"
+      "icon": "./src/badgeImages/2.png"
     },
     {
       "id": "2",
       "title": "Mountain Master",
       "pointsRequired": 100,
-      "icon": "/badges/mountain.png"
+      "icon": "./src/badgeImages/1.png"
     },
     {
       "id": "3",
       "title": "Trail Blazer",
       "pointsRequired": 75,
-      "icon": "/badges/trailblazer.png"
+      "icon": "./src/badgeImages/3.png"
     },
     {
       "id": "4",
       "title": "Forest Friend",
       "pointsRequired": 60,
-      "icon": "/badges/forest.png"
+      "icon": "./src/badgeImages/4.png"
     },
     {
       "id": "5",
       "title": "Canyon Crawler",
       "pointsRequired": 90,
-      "icon": "/badges/canyon.png"
-    }
-  ],
-  "ImageIcons": [
-    {
-      "id": "1",
-      "name": "user_icon",
-      "description": "User name SVG icon",
-      "url": "https://www.svgrepo.com/show/7621/user-name.svg"
-    },
-    {
-      "id": "2",
-      "name": "email_icon",
-      "description": "Email/envelope SVG icon",
-      "url": "https://www.svgrepo.com/show/45476/email.svg"
-    },
-    {
-      "id": "3",
-      "name": "password_icon",
-      "description": "Password/security lock icon",
-      "url": "https://www.svgrepo.com/show/29340/password.svg"
+      "icon": "./src/badgeImages/5.png"
     }
   ]
 }
