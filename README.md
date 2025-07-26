@@ -156,7 +156,7 @@ npm run dev
 
 - Here is a preview of how the project works
 
-[project preview](public/0726.gif)
+[project preview](![0726](https://github.com/user-attachments/assets/68aa3ace-6881-47aa-922d-8b17824c38c8))
 
 ---
 
