@@ -189,5 +189,5 @@ npm run dev
 
 ### License
 
-This project is licensed under the MIT License © 2025 HikeKenya Team.
+This project is licensed under the MIT License © 2025 HikeKenya.
 
