@@ -5,13 +5,18 @@ import TrailSearchBar from "../components/Trails/TrailSearchBar";
 import { motion, useAnimation, useInView } from "framer-motion";
 
 
-function Home({ trails, reviews }) {
+function Home({ initialTrails, reviews }) {
+    console.log("initialTrails received in Home.jsx:", initialTrails);
     const [searchTerm, setSearchTerm] = useState("");
     const trailSectionRef = useRef(null);
+    const trails = initialTrails;
+
+    console.log("Trails state in Home.jsx:", trails);
 
     const filteredResults = trails.filter((trail) =>
       trail.title.toLowerCase().includes(searchTerm.toLowerCase()) 
     );
+    console.log("filteredResults:", filteredResults);
 
     function handleSearch(e) {
         setSearchTerm(e.target.value)
@@ -31,13 +36,18 @@ function Home({ trails, reviews }) {
       }
     }, [inView, textControls]);
 
+    // Function to refresh trails data
+    const refreshAllTrails = () => {
+        fetch(`http://localhost:3000/trails`)
+            .then(res => res.json())
+            .then(data => setTrails(data))
+            .catch(err => console.error("Error refreshing trails:", err));
+    };
+
     return(
         <div>
-            <Navbar />
-
-            
-
-      {/* Hero Section */}
+          <Navbar />
+          {/* Hero Section */}
       <section
         className="relative h-[70vh] bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url('https://i.pinimg.com/736x/f7/f0/32/f7f03239cdf53d42c9872f79da77bf39.jpg')` }}
@@ -85,7 +95,7 @@ function Home({ trails, reviews }) {
         </div>
       </section>
             <div className="bg-[#FAF7F2]"><TrailSearchBar searchTerm={searchTerm} onSearch={handleSearch} /></div>
-            <div className="bg-[#FAF7F2]"><TrailsContainer trails={filteredResults} reviews={reviews} /></div>
+            <div className="bg-[#FAF7F2]"><TrailsContainer trails={filteredResults} reviews={reviews} onTrailUpdate={refreshAllTrails}/></div>
         </div>
     );
 };

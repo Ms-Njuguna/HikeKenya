@@ -73,6 +73,7 @@ const LoginSignup = () => {
     <div className="w-6 h-6 border-4 border-green-500 border-t-transparent rounded-full animate-spin"></div>
     
     <button
+      type="button"
       onClick={logout}
       className="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-xl shadow"
     >

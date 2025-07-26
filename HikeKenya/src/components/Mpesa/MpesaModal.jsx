@@ -64,7 +64,7 @@ function MpesaModal({ trail, onClose }) {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-md relative">
-        <button onClick={onClose} className="absolute top-2 right-4 text-gray-600 text-xl">&times;</button>
+        <button type="button" onClick={onClose} className="absolute top-2 right-4 text-gray-600 text-xl">&times;</button>
         <h2 className="text-xl font-bold mb-2">Pay with M-pesa or Airtel Money</h2>
         <p className="mb-4 text-gray-700">
           Trail: <strong>{trail.title}</strong><br />

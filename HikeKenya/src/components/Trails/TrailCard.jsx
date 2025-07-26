@@ -7,7 +7,7 @@ import MapPreview from "./../Map/MapPreview";
 import Reviews from "./Reviews"; // Import the new Reviews component
 import { AuthContext } from "../../context/AuthContext";
 
-const TrailCard = ({ trail }) => {
+const TrailCard = ({ trail, onTrailUpdate }) => {
   const { user } = useContext(AuthContext);
   const userId = user?.id;
 
@@ -25,8 +25,8 @@ const TrailCard = ({ trail }) => {
         <p className="text-sm text-gray-500">{trail.location}</p>
 
         <div className="flex gap-4 mt-3">
-          <JoinTrailsButton userId={userId} trailId={trail.id} />
-          <FavoritesButton userId={userId} trailId={trail.id} />
+          <JoinTrailsButton userId={userId} trailId={trail.id} onJoin={onTrailUpdate}/>
+          <FavoritesButton userId={userId} trailId={trail.id} onToggle={onTrailUpdate}/>
         </div>
 
         {expanded && (
@@ -58,6 +58,7 @@ const TrailCard = ({ trail }) => {
         )}
 
         <button
+        type="button"
   onClick={toggleExpand}
   className="mt-6 flex items-center gap-2 text-green-700 font-medium text-sm hover:text-green-900 transition-colors"
 >

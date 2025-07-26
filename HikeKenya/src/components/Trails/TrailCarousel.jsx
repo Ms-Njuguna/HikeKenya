@@ -61,12 +61,14 @@ const TrailCarousel = ({ photos }) => {
 
       {/* Arrows */}
       <button
+        type="button"
         className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white/70 hover:bg-white text-gray-700 rounded-full p-2 hidden group-hover:block"
         onClick={prevSlide}
       >
         <ChevronLeft size={24} />
       </button>
       <button
+        type="button"
         className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/70 hover:bg-white text-gray-700 rounded-full p-2 hidden group-hover:block"
         onClick={nextSlide}
       >

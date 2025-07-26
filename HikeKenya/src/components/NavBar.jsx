@@ -22,7 +22,7 @@ const Navbar = () => {
           {isAuthenticated ? (
             <>
               <Link to="/dashboard" className="hover:text-[#D4AF37] transition">Dashboard</Link>
-              <button onClick={logout} className="hover:text-red-400 transition">Logout</button>
+              <button type="button" onClick={logout} className="hover:text-red-400 transition">Logout</button>
             </>
           ) : (
             <>

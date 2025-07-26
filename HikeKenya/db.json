@@ -15,7 +15,11 @@
       ],
       "points": 120,
       "payments": [],
-      "favorites": [],
+      "favorites": [
+        "4",
+        "6",
+        "2"
+      ],
       "attendedTrails": []
     },
     {

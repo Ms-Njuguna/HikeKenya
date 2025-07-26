@@ -5,7 +5,7 @@ import mpesaIcon from '../../ImageIcons/download.png';
 const MpesaAnimatedButton = ({ onClick }) => {
   return (
     <StyledWrapper>
-      <button onClick={onClick}>
+      <button type="button" onClick={onClick}>
         <div className="svg-wrapper-1">
           <div className="svg-wrapper">
             <img src={mpesaIcon} alt="Mpesa" width={25} height={28} />

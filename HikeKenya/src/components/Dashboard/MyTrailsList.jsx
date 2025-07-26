@@ -152,6 +152,7 @@ function MyTrailsList() {
 
                   {status === "paid_past" && (
                     <button
+                      type="button"
                       onClick={() => handleMarkAsAttended(trail)}
                       className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
                     >
@@ -165,6 +166,7 @@ function MyTrailsList() {
                         ✅ Attended
                       </span>
                       <button
+                        type="button"
                         onClick={() => setShowReviewModal(trail.id)}
                         className="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700"
                       >
@@ -191,12 +193,14 @@ function MyTrailsList() {
                     ></textarea>
                     <div className="mt-2 flex gap-2">
                       <button
+                        type="button"
                         onClick={() => handleReviewSubmit(trail.id)}
                         className="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700"
                       >
                         Submit
                       </button>
                       <button
+                        type="button"
                         onClick={() => setShowReviewModal(null)}
                         className="bg-gray-400 text-white px-3 py-1 rounded hover:bg-gray-500"
                       >
