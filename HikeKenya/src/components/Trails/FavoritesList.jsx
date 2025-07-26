@@ -45,7 +45,7 @@ function FavoritesList () {
                     {favoriteTrails.map((trail) => ( //Render each trail with it's name, add toggle button & refresh list on toggle 
                         <li key={trail.id} className="flex justify-between items-center">
                             <div className='flex flex-row gap-12'>
-                                <img src={trail.photos[1]} alt='favorite photo' className='rounded-[6px] h-40 w-40'></img>
+                                <img src={trail.photos[1]} alt='favorite photo' className='rounded-[8px] h-40 w-40'></img>
                                 <div>
                                     <h3>{trail.title}</h3>
                                     <p>{trail.date}</p>

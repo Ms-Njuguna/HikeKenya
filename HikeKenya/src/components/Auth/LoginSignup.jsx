@@ -2,14 +2,8 @@ import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-
-import {
-  User,
-  Mail,
-  Lock,
-  LogIn,
-  LogOut,
-} from "lucide-react";
+import Loader from "../ui/Loader";
+import { User, Mail, Lock, LogOut } from "lucide-react";
 
 const LoginSignup = () => {
   const [action, setAction] = useState("Sign Up");
@@ -61,30 +55,28 @@ const LoginSignup = () => {
         </div>
 
         {user ? (
-  <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 0.8 }}
-    className="text-center flex flex-col items-center space-y-4"
-  >
-    <p className="text-gray-700 text-lg">Welcome, {user.email}!</p>
+          <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="text-center flex flex-col items-center space-y-4"
+          >
+            <p className="text-gray-700 text-lg">Welcome, {user.name}!</p>
+            <div><Loader /></div>
     
-    
-    <div className="w-6 h-6 border-4 border-green-500 border-t-transparent rounded-full animate-spin"></div>
-    
-    <button
-      type="button"
-      onClick={logout}
-      className="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-xl shadow"
-    >
-      <LogOut className="inline w-4 h-4 mr-1" />
-      Logout
-    </button>
-  </motion.div>
-) : (
+            <button
+            type="button"
+            onClick={logout}
+            className="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-[8px] shadow"
+            >
+              <LogOut className="inline w-4 h-4 mr-1" />
+              Logout
+            </button>
+          </motion.div>
+        ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
             {action === "Sign Up" && (
-              <div className="flex items-center border rounded-xl px-3 py-2 bg-white shadow-sm">
+              <div className="flex items-center border rounded-[8px] px-3 py-2 bg-white shadow-sm">
                 <User className="text-gray-500 w-4 h-4 mr-2" />
                 <input
                   type="text"
@@ -97,7 +89,7 @@ const LoginSignup = () => {
               </div>
             )}
 
-            <div className="flex items-center border rounded-xl px-3 py-2 bg-white shadow-sm">
+            <div className="flex items-center border rounded-[8px] px-3 py-2 bg-white shadow-sm">
               <Mail className="text-gray-500 w-4 h-4 mr-2" />
               <input
                 type="email"
@@ -109,7 +101,7 @@ const LoginSignup = () => {
               />
             </div>
 
-            <div className="flex items-center border rounded-xl px-3 py-2 bg-white shadow-sm">
+            <div className="flex items-center border rounded-[8px] px-3 py-2 bg-white shadow-sm">
               <Lock className="text-gray-500 w-4 h-4 mr-2" />
               <input
                 type="password"
@@ -135,7 +127,7 @@ const LoginSignup = () => {
 
             <button
               type="submit"
-              className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-xl shadow transition-all duration-300"
+              className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-[8px] shadow transition-all duration-300"
             >
               {action}
             </button>
@@ -143,7 +135,7 @@ const LoginSignup = () => {
             <div className="flex justify-between items-center mt-4">
               <button
                 type="button"
-                className={`px-3 py-1 rounded-full text-sm ${
+                className={`px-3 py-1 rounded-[8px] text-sm ${
                   action === "Sign Up"
                     ? "bg-green-600 text-white"
                     : "text-gray-600 border border-gray-300"
@@ -154,7 +146,7 @@ const LoginSignup = () => {
               </button>
               <button
                 type="button"
-                className={`px-3 py-1 rounded-full text-sm ${
+                className={`px-3 py-1 rounded-[8px] text-sm ${
                   action === "Login"
                     ? "bg-green-600 text-white"
                     : "text-gray-600 border border-gray-300"

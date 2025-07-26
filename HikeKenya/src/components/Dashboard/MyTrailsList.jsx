@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import MpesaModal from "../Mpesa/MpesaModal";
 import { AuthContext } from "../../context/AuthContext";
 import MpesaAnimatedButton from '../ui/MpesaAnimatedButton';
+import { toast } from 'sonner';
 
 function MyTrailsList() {
   const { user, setUser } = useContext(AuthContext);
@@ -33,9 +34,7 @@ function MyTrailsList() {
       .catch((err) => console.error("Failed to fetch trails:", err));
   }, []);
 
-  const hasPaidForTrail = (trailId) =>
-    Array.isArray(user?.payments) &&
-    user.payments.some((p) => String(p.trail) === String(trailId));
+  const hasPaidForTrail = (trailId) => Array.isArray(user?.payments) && user.payments.some((p) => String(p.trail) === String(trailId));
 
   const getTrailStatus = (trail) => {
     const isAttended = attendedTrails.map(String).includes(String(trail.id));
@@ -82,7 +81,14 @@ function MyTrailsList() {
         setUser(updatedUser);
         localStorage.setItem("user", JSON.stringify(updatedUser));
         setShowReviewModal(trail.id);
-        alert("Marked as attended 🎉");
+        toast.success("Successfully marked trail as attended!", {
+          position: "top-center", 
+          style: {
+            borderRadius: '8px',
+            background: '#1F3B29',
+            color: '#fff',
+          },
+        });
       })
       .catch((err) => console.error("Error marking as attended:", err));
   };
@@ -106,8 +112,15 @@ function MyTrailsList() {
     body: JSON.stringify(newReview),
   })
     .then((res) => res.json())
-    .then((savedReview) => {
-      alert("Review submitted! ✅");
+    .then(() => {
+      toast.success("Successfully added a review!", {
+          position: "top-center", 
+          style: {
+            borderRadius: '8px',
+            background: '#1F3B29',
+            color: '#fff',
+          },
+        });
       setShowReviewModal(null);
       setReviewInput((prev) => ({ ...prev, [trailId]: "" }));
     })
@@ -121,7 +134,6 @@ function MyTrailsList() {
 
   return (
     <div className="p-4">
-
       {joinedTrailDetails.length === 0 ? (
         <p className="text-gray-500">No joined trails yet!</p>
       ) : (
@@ -134,7 +146,7 @@ function MyTrailsList() {
             const daysLeft = Math.ceil((trailDate - today) / (1000 * 60 * 60 * 24));
 
             return (
-              <li key={trail.id} className="border p-4 rounded shadow">
+              <li key={trail.id} className="border p-4 rounded-[8px] shadow">
                 <h3 className="text-lg font-semibold">{trail.title}</h3>
                 <p>{trail.description}</p>
                 <p className="text-gray-500 text-sm">Date: {trail.date}</p>
@@ -145,8 +157,9 @@ function MyTrailsList() {
                   )}
 
                   {status === "paid_upcoming" && (
-                    <span className="text-sm text-gray-600">
-                      🕒 {daysLeft} day(s) remaining
+                    <span className="text-sm text-gray-600 flex gap-2">
+                      <svg className="animate-clock" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1F3B29"><path d="m438-298 226-226-57-57-169 169-85-85-57 57 142 142Zm42 218q-75 0-140.5-28.5t-114-77q-48.5-48.5-77-114T120-440q0-75 28.5-140.5t77-114q48.5-48.5 114-77T480-800q75 0 140.5 28.5t114 77q48.5 48.5 77 114T840-440q0 75-28.5 140.5t-77 114q-48.5 48.5-114 77T480-80Zm0-360ZM224-866l56 56-170 170-56-56 170-170Zm512 0 170 170-56 56-170-170 56-56ZM480-160q117 0 198.5-81.5T760-440q0-117-81.5-198.5T480-720q-117 0-198.5 81.5T200-440q0 117 81.5 198.5T480-160Z"/></svg> 
+                      {daysLeft} day(s) remaining
                     </span>
                   )}
 
@@ -154,7 +167,7 @@ function MyTrailsList() {
                     <button
                       type="button"
                       onClick={() => handleMarkAsAttended(trail)}
-                      className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
+                      className="bg-[#1F3B29] text-white px-3 py-1 rounded-[8px] hover:bg-[#D4AF37]"
                     >
                       Mark as Attended
                     </button>
@@ -162,13 +175,14 @@ function MyTrailsList() {
 
                   {status === "attended" && (
                     <>
-                      <span className="text-green-600 font-medium flex items-center gap-1">
-                        ✅ Attended
+                      <span className="text-[#1F3B29] font-medium items-center flex gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1F3B29"><path d="m424-312 282-282-56-56-226 226-114-114-56 56 170 170ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/></svg>
+                         <p>Attended</p>
                       </span>
                       <button
                         type="button"
                         onClick={() => setShowReviewModal(trail.id)}
-                        className="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700"
+                        className="bg-[#1F3B29] text-white px-3 py-1 rounded-[8px] hover:bg-[#D4AF37]"
                       >
                         Leave a Review
                       </button>
@@ -177,10 +191,10 @@ function MyTrailsList() {
                 </div>
 
                 {showReviewModal === trail.id && (
-                  <div className="mt-4 p-4 bg-gray-100 border rounded">
+                  <div className="mt-4 p-4 bg-[#FAF7F2] border rounded-[8px]">
                     <h4 className="font-semibold mb-2">Write a Review</h4>
                     <textarea
-                      className="w-full p-2 border rounded"
+                      className="w-full p-2 border rounded-[8px]"
                       rows="3"
                       placeholder="Share your hiking experience..."
                       value={reviewInput[trail.id] || ""}
@@ -195,14 +209,14 @@ function MyTrailsList() {
                       <button
                         type="button"
                         onClick={() => handleReviewSubmit(trail.id)}
-                        className="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700"
+                        className="bg-[#1F3B29] text-white px-3 py-1 rounded-[8px]"
                       >
                         Submit
                       </button>
                       <button
                         type="button"
                         onClick={() => setShowReviewModal(null)}
-                        className="bg-gray-400 text-white px-3 py-1 rounded hover:bg-gray-500"
+                        className=" text-[#1F3B29] px-3 py-1 rounded-[8px] "
                       >
                         Cancel
                       </button>

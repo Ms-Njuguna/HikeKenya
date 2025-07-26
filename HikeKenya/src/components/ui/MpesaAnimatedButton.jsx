@@ -28,7 +28,7 @@ const StyledWrapper = styled.div`
     display: flex;
     align-items: center;
     border: 1px solid #047857; /* green-600 */
-    border-radius: 16px;
+    border-radius: 8px;
     overflow: hidden; /* ✅ clip overflowed span */
     transition: all 0.2s;
     cursor: pointer;

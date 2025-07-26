@@ -4,7 +4,7 @@ import JoinTrailsButton from "./JoinTrailsButton";
 import FavoritesButton from "./FavoritesButton";
 import WeatherCard from "./../Weather/WeatherCard";
 import MapPreview from "./../Map/MapPreview";
-import Reviews from "./Reviews"; // Import the new Reviews component
+import Reviews from "./Reviews"; 
 import { AuthContext } from "../../context/AuthContext";
 
 const TrailCard = ({ trail }) => {
@@ -16,7 +16,7 @@ const TrailCard = ({ trail }) => {
   const toggleExpand = () => setExpanded(prev => !prev);
 
   return (
-    <div className="bg-white rounded-2xl shadow-[0_12px_24px_-6px_rgba(0,0,0,0.1)] border border-gray-100 overflow-hidden mb-8 transition-all duration-300 hover:shadow-xl">
+    <div className="bg-white rounded-[8px] shadow-[0_12px_24px_-6px_rgba(0,0,0,0.1)] border border-gray-100 overflow-hidden mb-8 transition-all duration-300 hover:shadow-xl">
       <TrailCarousel photos={trail.photos || []} />
 
       <div className="p-4">
@@ -59,37 +59,37 @@ const TrailCard = ({ trail }) => {
 
         <button
         type="button"
-  onClick={toggleExpand}
-  className="mt-6 flex items-center gap-2 text-green-700 font-medium text-sm hover:text-green-900 transition-colors"
->
-  {expanded ? (
-    <>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="w-4 h-4"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7" />
-      </svg>
-      Show Less
-    </>
-  ) : (
-    <>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="w-4 h-4"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-      </svg>
-      Show More Details
-    </>
-  )}
-</button>
+        onClick={toggleExpand}
+        className="mt-6 flex items-center gap-2 text-green-700 font-medium text-sm hover:text-green-900 transition-colors"
+        >
+          {expanded ? (
+            <>
+              <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7" />
+              </svg>
+              Show Less
+           </>
+          ) : (
+            <>
+              <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+              </svg>
+              Show More Details
+            </>
+          )}
+        </button>
       </div>
     </div>
   );

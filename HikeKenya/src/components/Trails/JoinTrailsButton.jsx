@@ -2,12 +2,7 @@ import React, { useEffect, useState, useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { toast } from 'sonner';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "../ui/tooltip";
+import {  Tooltip,  TooltipContent,  TooltipProvider,  TooltipTrigger } from "../ui/tooltip";
 
 function JoinTrailsButton({ trailId }) {
   const { user } = useContext(AuthContext);
@@ -77,10 +72,10 @@ function JoinTrailsButton({ trailId }) {
             type="button"
             onClick={handleJoinClick}
             disabled={alreadyJoined}
-            className={`px-3 py-1 rounded ${
+            className={`px-3 py-1 rounded-[8px] ${
               alreadyJoined
                 ? "bg-gray-300 text-black cursor-not-allowed"
-                : "bg-green-500 text-white hover:bg-green-600"
+                : "bg-green-500 text-white hover:bg-#1F3B29"
             }`}
           >
             {alreadyJoined ? "Joined" : "Join Trail"}

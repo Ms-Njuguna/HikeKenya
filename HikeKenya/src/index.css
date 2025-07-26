@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .faq-icon:hover {
   animation: jello-vertical 0.7s both;
@@ -26,4 +29,33 @@
   100% {
     transform: scale3d(1, 1, 1);
   }
+}
+
+/* Add this to your CSS file */
+@keyframes shake-zoom {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.05) rotate(5deg);
+  }
+  50% {
+    transform: scale(1) rotate(-5deg);
+  }
+  75% {
+    transform: scale(1.05) rotate(5deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.animate-clock {
+  animation: shake-zoom 1s ease-in-out infinite alternate; /* Adjust duration and iteration as needed */
+  transform-origin: center center; /* Ensure scaling and rotation originate from the center */
+}
+
+.shadow-custom-top {
+  box-shadow: 0px -4px 6px -1px rgba(0, 0, 0, 0.1), /* Standard shadow-md top-offset */
+              0px -2px 4px -2px rgba(0, 0, 0, 0.07); /* Standard shadow-md top-offset */
 }

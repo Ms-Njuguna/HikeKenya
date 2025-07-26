@@ -1,18 +1,6 @@
 import React from "react";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@ark-ui/react/hover-card";
-import {
-  Sun,
-  ThermometerSun,
-  Wind,
-  Cloud,
-  CloudSun,
-  CloudRain,
-  Info,
-} from "lucide-react";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@ark-ui/react/hover-card";
+import { Sun, ThermometerSun,  Wind,  Cloud,  CloudSun,  CloudRain,  Info } from "lucide-react";
 
 export default function WeatherCard({ temperature, condition, windSpeed, tips }) {
   const getConditionIcon = (condition) => {
@@ -33,7 +21,7 @@ export default function WeatherCard({ temperature, condition, windSpeed, tips })
   };
 
   return (
-    <div className="relative z-10 p-4 bg-white/70 backdrop-blur-md rounded-2xl shadow-md flex items-center justify-between space-x-6 border border-gray-100">
+    <div className="relative z-10 p-4 bg-white/70 backdrop-blur-md rounded-[8px] shadow-md flex items-center justify-between space-x-6 border border-gray-100">
       <div className="flex items-center gap-2 text-gray-800">
         {getConditionIcon(condition)}
         <span className="font-medium">{condition}</span>
@@ -57,15 +45,15 @@ export default function WeatherCard({ temperature, condition, windSpeed, tips })
         </HoverCardTrigger>
 
         <HoverCardContent
-  className="absolute bottom-full right-0 mb-2 z-[9999] text-sm p-3 bg-white rounded-lg shadow-xl border border-gray-200 w-64"
->
-  <p className="font-semibold text-gray-800 mb-1">Weather Tips:</p>
-  <ul className="list-disc list-inside text-gray-600 space-y-1">
-    {tips.map((tip, index) => (
-      <li key={index}>{tip}</li>
-    ))}
-  </ul>
-</HoverCardContent>
+        className="absolute bottom-full right-0 mb-2 z-[9999] text-sm p-3 bg-white rounded-[8px] shadow-xl border border-gray-200 w-64"
+        >
+          <p className="font-semibold text-gray-800 mb-1">Weather Tips:</p>
+          <ul className="list-disc list-inside text-gray-600 space-y-1">
+            {tips.map((tip, index) => (
+              <li key={index}>{tip}</li>
+            ))}
+          </ul>
+        </HoverCardContent>
       </HoverCard.Root>
     </div>
   );

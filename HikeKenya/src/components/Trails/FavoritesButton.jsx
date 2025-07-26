@@ -26,7 +26,8 @@ function FavoritesButton ( {trailId} ) {
 
   //function to handle clicking 
   const handleToggleFavorite = (e) => {
-    e?.preventDefault();
+    e.preventDefault();
+    
     if (!userId) {
       navigate("/login-signup"); // 🔁 redirect unauthenticated users
       return;
@@ -42,20 +43,21 @@ function FavoritesButton ( {trailId} ) {
       fetch(`http://localhost:3000/users/${userId}`, {
         method: 'PATCH',
         headers: {
-            'Content-Type' : 'application/json',
+          'Content-Type' : 'application/json',
         },
         body: JSON.stringify({ favorites : updatedFavorites }), 
-    })
-        .then((res) => res.json())
-        .then(() => {
-          setIsFavorite(!isFavorite); // Toggle state to update button label
-        });
-      }) 
-    };
+      })
+      .then((res) => res.json())
+      .then(() => {
+        setIsFavorite(!isFavorite); // Toggle state to update button label
+      });
+    }) 
+  };
+
   // Return JSX and render button depending on state
   return (
     <button type="button" onClick={handleToggleFavorite} className="flex items-center gap-2 text-sm text-green-700 hover:text-green-900">
-        {isFavorite ? (<> <BsHeartFill className="text-red-600"/> Remove from Favorites </> ) : (<> <BsHeart className="text-gray-600"/> Add to Favorites </>)}
+      {isFavorite ? (<> <BsHeartFill className="text-red-600"/> Remove from Favorites </> ) : (<> <BsHeart className="text-gray-600"/> Add to Favorites </>)}
     </button>
   );
 }

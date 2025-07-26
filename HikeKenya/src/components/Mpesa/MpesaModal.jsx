@@ -62,7 +62,7 @@ function MpesaModal({ trail, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-[#1F3B29] bg-opacity-30 flex items-center justify-center z-50" style={{ backgroundColor: 'rgba(0, 0, 0, 0.85)' }}>
       <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-md relative">
         <button type="button" onClick={onClose} className="absolute top-2 right-4 text-gray-600 text-xl">&times;</button>
         <h2 className="text-xl font-bold mb-2">Pay with M-pesa or Airtel Money</h2>
@@ -79,21 +79,21 @@ function MpesaModal({ trail, onClose }) {
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="e.g. 0722 123 456"
-              className="w-full border p-2 rounded"
+              className="w-full border p-2 rounded-[8px]"
             />
           </div>
           {error && <p className="text-red-600 text-sm">{error}</p>}
           {success &&
            <>
-              <p className="text-green-600 text-sm mt-2">Payment was successful ✅</p>
+              <p className="text-[#1F3B29] text-sm mt-2">Payment was successful ✅</p>
               <div className="absolute inset-0 flex justify-center items-center z-50">
-                <ConfettiExplosion force={0.8} duration={3000} particleCount={150} width={1600} zIndex={9999}/>
+                <ConfettiExplosion force={0.8} duration={2000} particleCount={150} width={1600} zIndex={9999}/>
               </div>
             </>
           }
           <button
             type="submit"
-            className="bg-green-700 text-[#FAF7F2] px-4 py-2 rounded flex items-center justify-center gap-2"
+            className="bg-[#1F3B29] text-[#FAF7F2] px-4 py-2 rounded-[8px] flex items-center justify-center gap-2"
           >
             <span className="flex items-center gap-2">
               <img src={mpesaIcon} alt="M-Pesa" className="h-5 w-5" />

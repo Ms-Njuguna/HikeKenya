@@ -7,19 +7,44 @@
       "password": "G#v9Tm$2pLq!Xr7e",
       "joinedTrails": [
         1,
-        3
+        3,
+        4
       ],
       "badges": [
         "Explorer",
         "Mountain Master"
       ],
-      "points": 120,
-      "payments": [],
+      "points": 130,
+      "payments": [
+        {
+          "trail": "3",
+          "title": "Ngong Hills Ridge Hike",
+          "amount": 1500,
+          "phone": "0722123456",
+          "date": "2025-07-26T16:41:57.899Z"
+        },
+        {
+          "trail": "4",
+          "title": "Hell's Gate Canyon Trek",
+          "amount": 2000,
+          "phone": "0722123456",
+          "date": "2025-07-26T16:42:52.052Z"
+        },
+        {
+          "trail": "1",
+          "title": "Mt. Kenya Summit Trek",
+          "amount": 3000,
+          "phone": "0722123456",
+          "date": "2025-07-26T16:50:27.421Z"
+        }
+      ],
       "favorites": [
         "4",
         "6"
       ],
-      "attendedTrails": []
+      "attendedTrails": [
+        "1"
+      ]
     },
     {
       "id": "2",
@@ -544,6 +569,24 @@
       "comment": "Honestly, best experience eveeeeeer........",
       "rating": 5,
       "date": "2025-07-25"
+    },
+    {
+      "id": "0970",
+      "trailId": "1",
+      "userId": "1",
+      "username": "Newton",
+      "comment": "Really nice experience ...",
+      "rating": 5,
+      "date": "2025-07-26"
+    },
+    {
+      "id": "9672",
+      "trailId": "1",
+      "userId": "1",
+      "username": "Newton",
+      "comment": "And would recommend it 💯",
+      "rating": 5,
+      "date": "2025-07-26"
     }
   ],
   "badges": [

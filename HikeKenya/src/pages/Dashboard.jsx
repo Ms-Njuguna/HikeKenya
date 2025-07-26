@@ -12,10 +12,10 @@ function Dashboard({ badges }) {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
+      <Navbar isDashboard={true}/>
 
       {user ? (
-        <div className="max-w-5xl mx-auto my-[70px] py-10 px-4 sm:px-6 lg:px-8 bg-white rounded-xl shadow-md border border-green-100">
+        <div className="max-w-5xl mx-auto my-[70px] py-10 px-4 sm:px-6 lg:px-8 bg-white rounded-[8px] shadow-md border border-green-100">
           {/* User Info */}
           <div className="pb-6">
             <UserInfo name={user.name} email={user.email} points={user.points} />
