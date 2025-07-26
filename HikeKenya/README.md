@@ -177,13 +177,13 @@ npm run dev
 
 ### Future Improvements
 
-- GPS-based Navigation for real-time trail tracking
+- GPS-based Navigation for real-time trail tracking.
 
-- PWA Support for offline usability
+- PWA Support for offline usability.
 
-- Admin Dashboard for trail management
+- Admin Dashboard for trail management.
 
-- User Profiles for identity, sharing, and social interaction
+- User Profiles for identity, sharing, and social interaction.
 
 ---
 
