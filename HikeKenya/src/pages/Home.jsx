@@ -36,14 +36,6 @@ function Home({ initialTrails, reviews }) {
       }
     }, [inView, textControls]);
 
-    // Function to refresh trails data
-    const refreshAllTrails = () => {
-        fetch(`http://localhost:3000/trails`)
-            .then(res => res.json())
-            .then(data => setTrails(data))
-            .catch(err => console.error("Error refreshing trails:", err));
-    };
-
     return(
         <div>
           <Navbar />
@@ -95,7 +87,7 @@ function Home({ initialTrails, reviews }) {
         </div>
       </section>
             <div className="bg-[#FAF7F2]"><TrailSearchBar searchTerm={searchTerm} onSearch={handleSearch} /></div>
-            <div className="bg-[#FAF7F2]"><TrailsContainer trails={filteredResults} reviews={reviews} onTrailUpdate={refreshAllTrails}/></div>
+            <div className="bg-[#FAF7F2]"><TrailsContainer trails={filteredResults} reviews={reviews} /></div>
         </div>
     );
 };

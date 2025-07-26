@@ -9,7 +9,7 @@ import {
   TooltipTrigger,
 } from "../ui/tooltip";
 
-function JoinTrailsButton({ trailId, onJoin }) {
+function JoinTrailsButton({ trailId }) {
   const { user } = useContext(AuthContext);
   const userId = user?.id;
 
@@ -25,7 +25,7 @@ function JoinTrailsButton({ trailId, onJoin }) {
   }, [userId]);
 
   function handleJoinClick(e) {
-    e?.preventDefault();
+    e.preventDefault();
 
     if (!userId) {
       navigate("/login-signup");
@@ -54,7 +54,6 @@ function JoinTrailsButton({ trailId, onJoin }) {
         toast.success("Successfully joined trail!", {
           description: "You’ll find it in your dashboard.",
         });
-        onJoin && onJoin();
       })
       .catch((error) => {
         console.error("Join trail error:", error);

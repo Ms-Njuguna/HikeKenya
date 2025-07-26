@@ -6,7 +6,7 @@ import { BsHeart, BsHeartFill } from "react-icons/bs";
 
 //Function component to receive 'userId' and 'trailId' as props
 
-function FavoritesButton ( {trailId, onToggle} ) {
+function FavoritesButton ( {trailId} ) {
   const { user } = useContext(AuthContext);
   const userId = user?.id;
 
@@ -49,7 +49,6 @@ function FavoritesButton ( {trailId, onToggle} ) {
         .then((res) => res.json())
         .then(() => {
           setIsFavorite(!isFavorite); // Toggle state to update button label
-          if (onToggle) onToggle();
         });
       }) 
     };
